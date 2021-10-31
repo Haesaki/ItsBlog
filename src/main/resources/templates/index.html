@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="fragmentTemplate :: head(~{::title})">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" initial-scale="1.0">
+    <title>哈喽</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="../static/css/page.css">
+</head>
+
+<body>
+    <!--导航-->
+    <nav th:replace="fragmentTemplate :: menu(1)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
+        <div class="ui container">
+            <div class="ui inverted stackable menu">
+                <h1 class="ui orange header item">SINCQ</h1>
+                <!-- <h1 class="ui green header item y">QXC</h1> -->
+                <a href="#" class="item m-item m-mobild-hide">首页</a>
+                <a href="#" class="item m-item m-mobild-hide">标签</a>
+                <a href="#" class="item m-item m-mobild-hide">关于我</a>
+                <div class="right item m-item m-mobild-hide">
+                    <div class="ui icon inverted transparent input">
+                        <input type="text" placeholder="搜索...">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- button -->
+        <button class="ui menu toggle black icon button m-right-top m-mobile-show">
+            <i class="sidebar icon"></i>
+        </button>
+        <!-- <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
+            <i class="sidebar icon"></i>
+        </a> -->
+    </nav>
+    <!--中间内容-->
+    <div class="m-padded-tb-large">
+        <div class="ui container">
+            <div class="ui stackable grid">
+                <!-- 左边博客列表 -->
+                <div class="eleven wide column">
+                    <!-- 文章列表头部 -->
+                    <div class="ui top attached segment">
+                        <div class="ui middle aligned two column grid">
+                            <div class="column">
+                                <h3 class="ui orange header">博客</h3>
+                            </div>
+                            <div class="right aligned column">
+                                一共<h3 class="ui orange header m-inline-block m-text-thin">14</h3>篇
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 中间博客内容 -->
+                    <div class="ui attached segment">
+                        <div class="ui vertical segment m-padded-tb-large">
+                            <div class="ui mobile reversed stackable grid">
+                                <!-- 博客主体部分 -->
+                                <div class="ui eleven wide column">
+                                    <h3 class="ui header">Add Title</h3>
+                                    <p>haiodfj aisdlfjlas ioashjdflj oiasjdf saojdfj ioasjdfijp aisjdf ia aisjdfioja
+                                        paisjdf paosidjf </p>
+                                </div>
+
+                                <!-- 博客图片 -->
+                                <div class="five wide column">
+                                    <a href="#" target="_blank">
+                                        <img src="https://lh5.googleusercontent.com/p/AF1QipPT_-F4fJjs_tD8-7LYJ3V9twzxOzIbh3f5BGMw=s483-k-no"
+                                            alt="" class="ui rounded image">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 尾部翻页按钮 -->
+                    <div class="ui bottom attached segment">
+                        <div class="ui middle aligned two column grid">
+                            <div class="column">
+                                <a href="#" class="ui orange button">上一页</a>
+                            </div>
+                            <div class="right aligned column">
+                                <a href="#" class="ui orange button">下一页</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 右边快捷导航栏 -->
+                <div class="five wide column">
+                    <!-- 分类 -->
+                    <div class="ui segments">
+                        <div class="ui secondary segment">
+                            <div class="ui two column grid">
+                                <div class="column blod">分类</div>
+                                <div class="right aligned column">
+                                    <a href="" target="_blank">more</a>
+                                </div>
+                            </div>
+                            <div class="ui orange segment">
+                                <div class="ui fluid vertical menu">
+                                    <a href="#" target="_blank" class="item">
+                                        Good Game
+                                        <div class="ui orange left pointing label">13</div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 标签 -->
+                    <div class="ui segments">
+                        <div class="ui secondary segment">
+                            <div class="ui two column grid">
+                                <div class="column blod">标签</div>
+                                <div class="right aligned column">
+                                    <a href="" target="_blank">more</a>
+                                </div>
+                            </div>
+                            <div class="ui orange segment">
+                                <a href="#" target="_blank" class="ui orange left pointing label m-padded-tb-mini">
+                                    Good Game
+                                    <div class="details">13</div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--底部, 我认为我不需要底部的内容，不需要这么麻烦-->
+    <footer th:replace="fragmentTemplate :: foot" class="ui attached inverted vertical segment m-padded-tb">
+        <div class="ui center aligned container">
+            <!-- <h4 class="ui inverted header">Copyright | Designed by QXC</h4> -->
+            <h4 class="ui inverted header">Copyright | Designed by SINCQ</h4>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+    <script>
+        $('.menu.toggle').click(function () {
+            $('.m-item').toggleClass('m-mobile-show');
+        });
+    </script>
+</body>
+
+</html>

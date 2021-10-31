@@ -1,0 +1,183 @@
+.m-padded.mini{
+    padding: 0.3em !important
+  }
+  .m-padded-t-large{
+      padding-top: 5em !important;
+  }
+  .m-padded-tb-mini {
+      padding-top: 0.2em !important;
+      padding-bottom: 0.2em !important;
+  }
+  .m-padded-tb-mid {
+      padding-top: 3em !important;
+      padding-bottom: 3em !important;
+  }
+  .m-padded-tb-small {
+      padding-top: 2em !important;
+      padding-bottom: 2em !important;
+  }
+  .m-padded-tb-large {
+      padding-top: 5em !important;
+      padding-bottom: 5em !important;
+  }
+  .m-padded-tb-massive {
+      padding-top: 10em !important;
+      padding-bottom: 10em !important;
+  }
+  
+  .m-padded-b-mid {
+      padding-bottom: 3em !important;
+  }
+  
+  .m-padded-side {
+      padding-left: 3em !important;
+      padding-right: 3em !important;
+  }
+  
+  .m-padded-side-responsive {
+      padding-left: 3em !important;
+      padding-right: 3em !important;
+  }
+  
+  /*----- text ----*/
+  .m-text-thin {
+      font-weight: 300 !important;
+  }
+  
+  .m-text-spaced {
+      letter-spacing: 0.5px !important;
+  }
+  
+  .m-text-lined {
+      line-height: 1.5;
+  }
+  
+  .m-opacity-mini {
+      opacity: 0.9 !important;
+  }
+  
+  .m-opacity-small {
+      opacity: 0.7 !important;
+  }
+  
+  .m-opacity-mid {
+      opacity: 0.5 !important;
+  }
+  
+  .m-opacity-big {
+      opacity: 0.3 !important;
+  }
+  
+  /*---- margin ------*/
+  .m-margin-tb-mini {
+   margin-top: 0.3em !important;
+   margin-bottom: 0.3em !important;
+  }
+  
+  .m-margin-tb-mid {
+   margin-top: 1em !important;
+   margin-bottom: 1em !important;
+  }
+  
+  .m-margin-bottom-mini {
+      margin-bottom: 0.2em !important;
+  }
+  
+  /*----- display ----*/
+  .m-inline-block {
+      display: inline-block !important;
+  }
+  
+  .m-container {
+   max-width: 75em !important;
+   margin: auto !important;
+  }
+  
+  .m-container-small {
+   max-width: 65em !important;
+   margin: auto !important;
+  }
+  
+  /* ----- position ---*/
+  .m-top-right {
+   position: absolute;
+   top: 0;
+   right: 0;
+  }
+  
+  /*---- color -----*/
+  /* #EFB730 Ronchi #C2E3F4 Clear day #030305 Cinder #F2F4EF Brich */
+  /* #FDDCEF Delicate Pink #D5C5E9 Lilac sky #3A5A69 Muted cyan #030923 Gloomy navy */
+  /* #D6D0AE ecru #F5E68B daffodil #6BB6A1 poolside #DF6033 flame */
+  .m-poolside {
+   color: #6BB6A1;
+  }
+  
+  .m-daffodil {
+   color: #F5E68B;
+  }
+  
+  .m-ecru {
+   color: #D6D0AE;
+  }
+  
+  .m-navy {
+   color: #030923;
+  }
+  
+  /*---shadow----*/
+  .m-shadow-small {
+      -webkit-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+  }
+  
+  /* media */
+  .m-mobile-display {
+      display: none !important;
+  }
+  
+  @media screen and (max-width: 768px) {
+      .m-mobile-hide {
+          display: none !important;
+      }
+  
+      .m-mobile-display {
+          display: block !important;
+      }
+  
+      .m-padded-side-responsive {
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+      }
+  
+      .m-padded-side-clear {
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+      }
+  
+      .m-mobile-width {
+          width: 100% !important;
+      }
+  }
+  
+  /* blur picture border */
+  .cover {
+      width: 1280px;
+      height: 644px;
+      position: relative;
+  }
+  .cover:after {
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      box-shadow:0 0 50px 30px #ffffff inset;
+  }
+  img{
+      width: 1280px;
+      height: 644px;
+      display: block;
+      margin-bottom: 10px;
+  }
