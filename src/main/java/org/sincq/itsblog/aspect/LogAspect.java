@@ -17,7 +17,7 @@ import java.util.Arrays;
 @Component
 public class LogAspect {
 
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Pointcut("execution(* org.sincq.itsblog.web.*.*(..))")        //定义切入点表达式
     public void log(){}

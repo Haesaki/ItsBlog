@@ -10,4 +10,6 @@ class ItsBlogApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+	void testMybatis(){}
 }

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.sincq.itsblog.dao.UserMapper">
+    <resultMap id="User" type="org.sincq.itsblog.entity.User">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+        <result column="username" jdbcType="VARCHAR" property="username" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="email" jdbcType="VARCHAR" property="email" />
+        <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+        <result column="type" jdbcType="INTEGER" property="type" />
+        <result column="createTime" jdbcType="DATE" property="createTime" />
+        <result column="updateTime" jdbcType="DATE" property="updateTime" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, nickname, username, password, email, avatar, type, createTime, updateTime
+    </sql>
+
+    <insert id="insertUser" keyColumn="id" keyProperty="id" parameterType="org.sincq.itsblog.entity.User" useGeneratedKeys="false">
+        insert into t_user (id, nickname, username, `password`,
+                            email, avatar, `type`,
+                            createTime, updateTime)
+        values (#{id, jdbcType=INTEGER} , #{nickname,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+                #{email,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER},
+                #{createTime,jdbcType=DATE}, #{updateTime,jdbcType=DATE})
+    </insert>
+
+    <delete id="deleteUserByUsername" parameterType="java.lang.String">
+        delete from t_user
+        where username = #{username,jdbcType=VARCHAR}
+    </delete>
+
+    <delete id="deleteUserById" parameterType="java.lang.Integer">
+        delete from t_user
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <delete id="deleteUserByEmail" parameterType="java.lang.String">
+        delete from t_user
+        where email = #{email,jdbcType=VARCHAR}
+    </delete>
+
+    <update id="updateUserByUsername" parameterType="org.sincq.itsblog.entity.User">
+        update t_user
+        set nickname = #{nickname,jdbcType=VARCHAR},
+            username = #{username,jdbcType=VARCHAR},
+            `password` = #{password,jdbcType=VARCHAR},
+            email = #{email,jdbcType=VARCHAR},
+            avatar = #{avatar,jdbcType=VARCHAR},
+            `type` = #{type,jdbcType=INTEGER},
+            createTime = #{createTime,jdbcType=DATE},
+            updateTime = #{updateTime,jdbcType=DATE}
+        where username = #{username,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateUserById" parameterType="org.sincq.itsblog.entity.User">
+        update t_user
+        set nickname = #{nickname,jdbcType=VARCHAR},
+            username = #{username,jdbcType=VARCHAR},
+            `password` = #{password,jdbcType=VARCHAR},
+            email = #{email,jdbcType=VARCHAR},
+            avatar = #{avatar,jdbcType=VARCHAR},
+            `type` = #{type,jdbcType=INTEGER},
+            createTime = #{createTime,jdbcType=DATE},
+            updateTime = #{updateTime,jdbcType=DATE}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateUserByEmail" parameterType="org.sincq.itsblog.entity.User">
+        update t_user
+        set nickname = #{nickname,jdbcType=VARCHAR},
+            username = #{username,jdbcType=VARCHAR},
+            `password` = #{password,jdbcType=VARCHAR},
+            email = #{email,jdbcType=VARCHAR},
+            avatar = #{avatar,jdbcType=VARCHAR},
+            `type` = #{type,jdbcType=INTEGER},
+            createTime = #{createTime,jdbcType=DATE},
+            updateTime = #{updateTime,jdbcType=DATE}
+        where email = #{email,jdbcType=INTEGER}
+    </update>
+
+    <select id="getUserByUsername" resultType="org.sincq.itsblog.entity.User">
+        select
+        <include refid="Base_Column_List" />
+        from t_user
+        where username = #{username,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getUserByEmail" resultType="org.sincq.itsblog.entity.User">
+        select
+        <include refid="Base_Column_List" />
+        from t_user
+        where email = #{email,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getUserById" resultType="org.sincq.itsblog.entity.User">
+        select
+        <include refid="Base_Column_List" />
+        from t_user
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+
+</mapper>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
-<head>
+<head th:replace="/admin/fragmentAdminTemplate :: head(~{::title})">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width" initial-scale="1.0">
     <title>后台管理</title>
@@ -12,7 +12,7 @@
 
 <body>
     <!--导航-->
-    <nav class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
+    <nav th:replace="/admin/fragmentAdminTemplate :: menu(1)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
         <div class="ui container">
             <div class="ui inverted stackable menu">
                 <h1 class="ui orange header item">后台管理</h1>

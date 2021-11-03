@@ -89,14 +89,14 @@
                     codeEmptyAlert    : "錯誤：請填寫代碼內容。",
                     placeholder:      : "coding now...."
                 },
-                htmlEntities : {
-                    title : "HTML實體字符"
+                {
+                    "HTML實體字符"
                 },
-                help : {
-                    title : "使用幫助"
+                {
+                    "使用幫助"
                 }
             }
-        };
+        }
         
         exports.defaults.lang = lang;
     };

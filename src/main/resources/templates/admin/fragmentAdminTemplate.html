@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:fragment="head(title)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" initial-scale="1.0">
+    <title th:replace="${title}">归档</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="../../static/css/typo.css" th:href="@{/css/typo.css}">
+    <link rel="stylesheet" href="../../static/css/animate.css" th:href="@{/css/animate.css}">
+    <link rel="stylesheet" href="../../static/lib/prism/prism.css" th:href="@{/lib/prism/prism.css}">
+    <link rel="stylesheet" href="../../static/css/page.css" th:href="@{/css/page.css}">
+    <link rel="stylesheet" href="../../static/lib/tocbot/tocbot.css" th:href="@{/lib/tocbot/tocbot.css}">
+</head>
+
+<body>
+
+<nav th:fragment="menu(n)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
+    <div class="ui container">
+        <div class="ui inverted stackable menu">
+            <h1 class="ui orange header item">后台管理</h1>
+            <!-- <h1 class="ui green header item y">QXC</h1> -->
+            <a href="/admin/blog" class="item m-item m-mobild-hide" th:classappend="${n==1} ? 'active'">博客</a>
+            <a href="/admin/type" class="item m-item m-mobild-hide" th:classappend="${n==2} ? 'active'">分类</a>
+            <a href="/admin/tag" class="item m-item m-mobild-hide" th:classappend="${n==3} ? 'active'">标签</a>
+
+            <div class="right m-item m-mobild-hide menu">
+                <div class="ui inline dropdown item">
+                    <div class="text">
+                        Sincq
+                    </div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a href="/admin/logout" class="item">注销</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- button -->
+    <button class="ui menu toggle black icon button m-right-top m-mobile-show">
+        <i class="sidebar icon"></i>
+    </button>
+    <!-- <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
+        <i class="sidebar icon"></i>
+    </a> -->
+</nav>
+
+<!--底部, 我认为我不需要底部的内容，不需要这么麻烦-->
+<footer th:fragment="foot" class="ui attached inverted vertical segment m-padded-tb">
+    <div class="ui center aligned container">
+        <!-- <h4 class="ui inverted header">Copyright | Designed by QXC</h4> -->
+        <h4 class="ui inverted header">Copyright | Designed by SINCQ</h4>
+    </div>
+</footer>
+
+<th:block th:fragment="script">
+
+</th:block>
+</body>
+</html>

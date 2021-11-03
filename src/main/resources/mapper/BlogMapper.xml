@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.sincq.itsblog.dao.BlogMapper">
+    <resultMap id="User" type="org.sincq.itsblog.entity.User">
+        <id property="id" column="id"/>
+        <result property="nickname" column="nickname"/>
+        <result property="username" column="username"/>
+        <result property="email" column="email"/>
+        <result property="avatar" column="avatar"/>
+    </resultMap>
+
+    <resultMap id="Blog" type="org.sincq.itsblog.entity.Blog">
+        <id property="id" column="id"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="flag" column="flag"/>
+        <result property="views" column="views"/>
+        <result property="subscribeMe" column="subscribeMe"/>
+        <result property="shareStatement" column="shareStatement"/>
+        <result property="commentable" column="commentable"/>
+        <result property="publish" column="publish"/>
+        <result property="recommend" column="recommend"/>
+        <result property="createTime" column="createTime"/>
+        <result property="updateTime" column="updateTime"/>
+        <result property="typeId" column="typeId"/>
+        <result property="userId" column="userId"/>
+    </resultMap>
+
+    <insert id="saveBlog" parameterType="org.sincq.itsblog.entity.Blog">
+        insert into blog.t_blog (id, title, content, flag, views, subscribeMe, shareStatement,commentabled, publish,
+                                 recommend, createTime, updateTime, typeId, userId)
+        values (#{id}, #{title}, #{content}, #{flag}, #{views}, #{subscribeMe},
+                #{shareStatement}, #{commentabled}, #{publish}, #{recommend}, #{createTime},
+                #{updateTime}, #{typeId}, #{userId});
+    </insert>
+
+    <delete id="deleteBlog">
+        delete from blog.t_blog where  id = #{id}
+    </delete>
+
+    <update id="updateTitle">
+        update blog.t_blog set title=#{title} where id=#{id}
+    </update>
+
+    <update id="updateContent">
+        update blog.t_blog set content=#{content} where id = #{id}
+    </update>
+
+    <update id="updateFlag">
+        update blog.t_blog set flag=#{flag} where id = #{id}
+    </update>
+
+    <update id="updateViews">
+        update blog.t_blog set views=#{views} where id = #{id}
+    </update>
+
+    <update id="updateSubscribeMe">
+        update blog.t_blog set subscribeMe=#{subscribeMe} where id = #{id}
+    </update>
+
+    <update id="updateShareStatement">
+        update blog.t_blog set shareStatement={shareStatement} where id = #{id};
+    </update>
+
+    <select id="listAllBlog" resultType="org.sincq.itsblog.entity.Blog">
+        select * from blog.t_blog
+    </select>
+
+    <select id="listBlogInPage" resultType="org.sincq.itsblog.entity.Blog">
+        BEGIN
+            SET N := numPerPage * (pageNum - 1);
+            RETURN (
+                SELECT *
+                FROM blog.t_blog
+                LIMIT N, numPerPage
+                );
+        END
+        SELECT * FROM blog.t_blog
+    </select>
+
+    <select id="listAllRecommendBlog" resultType="org.sincq.itsblog.entity.Blog">
+        SELECT *
+        FROM blog.t_blog
+        WHERE recommend=true
+    </select>
+</mapper>
+
