@@ -15,6 +15,10 @@ public class IndexController {
     public String index(){
         return "index";
     }
+    @GetMapping("/index")
+    public String getIndex(){
+        return "index";
+    }
 
     @GetMapping("/blog")
     public String blog(){
@@ -33,7 +37,7 @@ public class IndexController {
 
     @GetMapping("/archive")
     public String archive(){
-        return "archive";
+        return "archives";
     }
 
     @GetMapping("/blogPublish")

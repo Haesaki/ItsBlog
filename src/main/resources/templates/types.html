@@ -10,6 +10,7 @@
 </head>
 
 <body>
+<div class="stick-bottom-wrapper">
     <!--导航-->
     <nav class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
         <div class="ui container">
@@ -97,7 +98,7 @@
                             <div class="five wide column">
                                 <a href="#" target="_blank">
                                     <img src="https://lh5.googleusercontent.com/p/AF1QipPT_-F4fJjs_tD8-7LYJ3V9twzxOzIbh3f5BGMw=s483-k-no"
-                                        alt="" class="ui rounded image">
+                                         alt="" class="ui rounded image">
                                 </a>
                             </div>
                         </div>
@@ -117,22 +118,23 @@
             </div>
         </div>
     </div>
-    </div>
-
     <!--底部, 我认为我不需要底部的内容，不需要这么麻烦-->
-    <footer class="ui attached inverted vertical segment m-padded-tb">
+    <footer th:replace="fragmentTemplate :: foot" class="ui attached inverted vertical segment m-padded-tb">
         <div class="ui center aligned container">
             <!-- <h4 class="ui inverted header">Copyright | Designed by QXC</h4> -->
             <h4 class="ui inverted header">Copyright | Designed by SINCQ</h4>
         </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
-    <script>
-        $('.menu.toggle').click(function () {
-            $('.m-item').toggleClass('m-mobile-show');
-        });
-    </script>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<script>
+    $('.menu.toggle').click(function () {
+        $('.m-item').toggleClass('m-mobile-show');
+    });
+</script>
+<script th:replace="fragmentTemplate :: blogTotalRuntime"></script>
 </body>
 
 </html>

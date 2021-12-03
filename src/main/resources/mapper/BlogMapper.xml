@@ -28,7 +28,7 @@
     </resultMap>
 
     <insert id="saveBlog" parameterType="org.sincq.itsblog.entity.Blog">
-        insert into blog.t_blog (id, title, content, flag, views, subscribeMe, shareStatement,commentabled, publish,
+        insert into blog.t_blog (id, title, content, flag, views, subscribeMe, shareStatement, commentabled, publish,
                                  recommend, createTime, updateTime, typeId, userId)
         values (#{id}, #{title}, #{content}, #{flag}, #{views}, #{subscribeMe},
                 #{shareStatement}, #{commentabled}, #{publish}, #{recommend}, #{createTime},
@@ -36,53 +36,86 @@
     </insert>
 
     <delete id="deleteBlog">
-        delete from blog.t_blog where  id = #{id}
+        delete
+        from t_blog
+        where id = #{id}
     </delete>
 
+    <update id="updateBlogById">
+        update t_blog
+        set title          = #{title},
+            content        = #{content},
+            flag           = #{flag},
+            views          = #{views},
+            subscribeMe    = #{subscribeMe},
+            shareStatement = #{shareStatement},
+            commentabled   = #{commentabled},
+            publish        = #{publish},
+            recommend      = #{recommend},
+            createTime     = #{createTime},
+            updateTime     = {updateTime},
+            typeId = #{typeId},
+            userId = #{userId}
+    </update>
+
     <update id="updateTitle">
-        update blog.t_blog set title=#{title} where id=#{id}
+        update t_blog
+        set title=#{title}
+        where id = #{id}
     </update>
 
     <update id="updateContent">
-        update blog.t_blog set content=#{content} where id = #{id}
+        update t_blog
+        set content=#{content}
+        where id = #{id}
     </update>
 
     <update id="updateFlag">
-        update blog.t_blog set flag=#{flag} where id = #{id}
+        update t_blog
+        set flag=#{flag}
+        where id = #{id}
     </update>
 
     <update id="updateViews">
-        update blog.t_blog set views=#{views} where id = #{id}
+        update t_blog
+        set views=#{views}
+        where id = #{id}
     </update>
 
     <update id="updateSubscribeMe">
-        update blog.t_blog set subscribeMe=#{subscribeMe} where id = #{id}
+        update t_blog
+        set subscribeMe=#{subscribeMe}
+        where id = #{id}
     </update>
 
     <update id="updateShareStatement">
-        update blog.t_blog set shareStatement={shareStatement} where id = #{id};
+        update t_blog
+        set shareStatement={shareStatement}
+        where id = #{id};
     </update>
 
     <select id="listAllBlog" resultType="org.sincq.itsblog.entity.Blog">
-        select * from blog.t_blog
+        select *
+        from t_blog
     </select>
 
     <select id="listBlogInPage" resultType="org.sincq.itsblog.entity.Blog">
         BEGIN
-            SET N := numPerPage * (pageNum - 1);
-            RETURN (
-                SELECT *
-                FROM blog.t_blog
-                LIMIT N, numPerPage
-                );
+            SET
+        N := numPerPage * (pageNum - 1);
+        RETURN (
+            SELECT *
+            FROM t_blog LIMIT N, numPerPage
+            );
         END
-        SELECT * FROM blog.t_blog
+        SELECT *
+        FROM t_blog
     </select>
 
     <select id="listAllRecommendBlog" resultType="org.sincq.itsblog.entity.Blog">
         SELECT *
-        FROM blog.t_blog
-        WHERE recommend=true
+        FROM t_blog
+        WHERE recommend = true
     </select>
 </mapper>
 

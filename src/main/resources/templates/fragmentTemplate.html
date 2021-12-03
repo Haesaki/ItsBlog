@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../static/lib/tocbot/tocbot.css" th:href="@{/lib/tocbot/tocbot.css}">
 </head>
 
+
 <body>
 <!--导航-->
 <nav th:fragment="menu(n)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
@@ -21,7 +22,7 @@
             <!-- <h1 class="ui green header item y">QXC</h1> -->
             <a th:href="index" class="item m-item m-mobild-hide" th:classappend="${n==1} ? 'active'">首页</a>
             <a th:href="tag" class="item m-item m-mobild-hide" th:classappend="${n==2} ? 'active'">标签</a>
-            <a th:href="type" class="item m-item m-mobild-hide" th:classappend="${n==3} ? 'active'">归档</a>
+            <a th:href="archive" class="item m-item m-mobild-hide" th:classappend="${n==3} ? 'active'">归档</a>
             <a th:href="me" class="item m-item m-mobild-hide" th:classappend="${n==4} ? 'active'">关于我</a>
             <div class="right item m-item m-mobild-hide">
                 <div class="ui icon inverted transparent input">
@@ -33,14 +34,62 @@
 </nav>
 
 <!--底部, 我认为我不需要底部的内容，不需要这么麻烦-->
-<footer th:fragment="foot" class="ui attached inverted vertical segment m-padded-tb">
+<footer th:fragment="foot" class="ui attached vertical header stick-bottom-footer" style="width: 100% !important; color: black !important">
     <div class="ui center aligned container">
         <!-- <h4 class="ui inverted header">Copyright | Designed by QXC</h4> -->
-        <h4 class="ui inverted header">Copyright | Designed by SINCQ</h4>
+        <h4 class="ui header">我的博客已营业：<span id="totalRunTime" class="ui text"></span> (*๓´╰╯`๓)</h4>
+        <h4 class="ui header">Copyright | Designed by SINCQ</h4>
     </div>
 </footer>
 
-<th:block th:fragment="script">
+
+<script th:fragment="blogTotalRuntime">
+
+    // $('#newblog-container').load(/*[[@{/footer/newblog}]]*/"/footer/newblog");
+
+    $('#blog-message').load(/*[[@{/footer/blogmessage}]]*/"/footer/blogmessage");
+
+    // 运行时间统计
+    function CalRunTime() {
+        let theTime = "2021/10/5"
+        let endTime = new Date(theTime);
+        let totalSecs = (new Date() - endTime) / 1000;
+        let days = Math.floor(totalSecs / 3600 / 24);
+        let hours = Math.floor((totalSecs - days * 24 * 3600) / 3600);
+        let mins = Math.floor((totalSecs - days * 24 * 3600 - hours * 3600) / 60);
+        let secs = Math.floor((totalSecs - days * 24 * 3600 - hours * 3600 - mins * 60));
+        if (days != 0) {
+            document.getElementById("totalRunTime").innerHTML = days + "天" + hours + "小时";// + mins + "分钟" + secs + "秒";
+        } else if (hours == 0 && mins == 0) {
+            document.getElementById("totalRunTime").innerHTML = secs + "秒";
+        } else if (hours == 0 && mins != 0) {
+            document.getElementById("totalRunTime").innerHTML = mins + "分钟" + secs + "秒";
+        } else if (hours != 0) {
+            document.getElementById("totalRunTime").innerHTML = hours + "小时" + mins + "分钟" + secs + "秒";
+        }
+    }
+    CalRunTime()
+    setInterval("CalRunTime()", 36000);
+
+    $('.menu.toggle').click(function () {
+        $('.m-item').toggleClass('m-mobile-hide');
+    });
+
+    $('.ui.dropdown').dropdown({
+        on: 'hover'
+    });
+
+    //消息提示关闭初始化
+    $('.message .close')
+        .on('click', function () {
+            $(this)
+                .closest('.message')
+                .transition('fade');
+        });
+
+</script>
+
+<th:block>
 
 </th:block>
 </body>

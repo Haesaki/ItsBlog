@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 
-<head th:replace="/admin/fragmentAdminTemplate :: head(~{::title})">
+<head th:replace="admin/fragmentAdminTemplate :: head(~{::title})">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width" initial-scale="1.0">
     <title>分类管理</title>
@@ -11,7 +11,7 @@
 
 <body>
     <!--导航-->
-    <nav th:replace="/admin/fragmentAdminTemplate :: menu(2)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
+    <nav th:replace="admin/fragmentAdminTemplate :: menu(2)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small">
         <div class="ui container">
             <div class="ui inverted stackable menu">
                 <h1 class="ui orange header item">后台管理</h1>
@@ -52,66 +52,51 @@
     <!--中间内容-->
     <div class="m-container-small m-padded-tb">
         <div class="ui container">
-<!--            <div class="ui segment form">-->
-<!--                <input type="hidden" name="page">-->
-<!--                <div class="inline fields">-->
-<!--                    <div class="field">-->
-<!--                        <input type="text" name="title" placeholder="标题">-->
-<!--                    </div>-->
-<!--                    <div class="field">-->
-<!--                        <div class="ui selection dropdown">-->
-<!--                            <input type="hidden" name="type.id">-->
-<!--                            <i class="dropdown icon"></i>-->
-<!--                            <div class="default text">类型</div>-->
-<!--                            <div class="menu">-->
-<!--                                <div th:each="type : ${types}" class="item" data-value="1" th:data-value="${type.id}"-->
-<!--                                    th:text="${type.name}">Error</div>-->
-<!--                                &lt;!&ndash;/*&ndash;&gt;-->
-<!--                                <div class="item" data-value="2">Log</div>-->
-<!--                                &lt;!&ndash;*/&ndash;&gt;-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="field">-->
-<!--                        <div class="ui checkbox">-->
-<!--                            <input type="checkbox" id="recommend" name="recommend">-->
-<!--                            <label for="recommend">Recommend</label>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="field">-->
-<!--                        <button type="button" id="search-btn" class="ui orange basic button"><i-->
-<!--                                class="search icon"></i>Search</button>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-            <table class="ui celled table">
+            <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
+                <i class="close icon"></i>
+                <div class="" th:text="|提示： ${message}">提示：操作成功！</div>
+            </div>
+            <table class="ui compact teal table">
                 <thead>
-                    <tr>
-                        <th> </th>
-                        <th>名称</th>
-                        <th>操作</th>
-                    </tr>
+                <tr align="center">
+                    <th>ID</th>
+                    <th>名称</th>
+                    <th>操作</th>
+                </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>哈哈</td>
-                        <td>
-                            <a href="#" class="ui mini green basic button">编辑</a>
-                            <a href="#" class="ui mini red basic button">删除</a>
-                        </td>
-                    </tr>
+                <tr align="center" th:each="type,iterStat : ${pageInfo.list}">
+                    <td th:text="${iterStat.count}">1</td>
+                    <td th:text="${type.name}">我的故事</td>
+                    <td>
+<!--                        <a href="#" th:href="@{admin/type/{id}/input(id=${type.id})}" class="ui mini orange basic button">编辑</a>-->
+                        <a href="#" th:href="@{admin/type/{id}/delete(id=${type.id})}"  onclick="return confirm('确定要删除该分类吗？三思啊! 删了可就没了！')" class="ui mini red basic button">删除</a>
+                    </td>
+                </tr>
                 </tbody>
                 <tfoot>
-                    <tr>
-                        <th colspan="6">
-                            <div class="ui mini pagination menu">
-                                <a class="item">上一页</a>
-                                <a class="item">下一页</a>
+                <tr>
+                    <th colspan="6" >
+                        <div class="ui inverted divided stackable grid">
+                            <div class="three wide column" align="center">
+                                <a class="button" th:href="@{admin/type(pageNum=${pageInfo.hasPreviousPage}?${pageInfo.prePage}:1)}" th:unless="${pageInfo.isFirstPage}">上一页</a>
                             </div>
-                            <button class="ui mini right floated basic orange button">新增</button>
-                        </th>
-                    </tr>
+
+                            <div class="ten wide column" align="center">
+                                <p>第 <span th:text="${pageInfo.pageNum}"></span> 页，共 <span th:text="${pageInfo.pages}"></span> 页，有 <span th:text="${pageInfo.total}"></span> 个分类</p>
+                            </div>
+
+                            <div class="three wide column" align="center">
+                                <a class="button" th:href="@{admin/type(pageNum=${pageInfo.hasNextPage}?${pageInfo.nextPage}:${pageInfo.pages})}" th:unless="${pageInfo.isLastPage}">下一页</a>
+                            </div>
+                        </div>
+                        <div align="center">
+                            <a href="#" th:href="@{admin/type/input}">
+                                <button type="button" class="ui orange button m-mobile-wide m-margin-top"><i class="pencil icon"></i>新增</button>
+                            </a>
+                        </div>
+                    </th>
+                </tr>
                 </tfoot>
             </table>
         </div>
@@ -120,7 +105,7 @@
     <!--底部, 我认为我不需要底部的内容，不需要这么麻烦-->
     <br>
     <br>
-    <footer th:replace="/admin/fragmentAdminTemplate :: foot" class="ui inverted vertical segment m-padded-tb-large">
+    <footer th:replace="admin/fragmentAdminTemplate :: foot" class="ui inverted vertical segment m-padded-tb-large">
         <div class="ui center aligned container">
             <!-- <h4 class="ui inverted header">Copyright | Designed by QXC</h4> -->
             <h4 class="ui inverted header">Copyright | Designed by SINCQ</h4>
@@ -136,6 +121,7 @@
             on: 'hover'
         });
     </script>
+    <script th:replace="admin/fragmentAdminTemplate :: blogTotalRuntime"></script>
 </body>
 
 </html>
