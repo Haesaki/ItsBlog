@@ -25,7 +25,7 @@ public class LoginController {
     public String loginPage(HttpServletRequest request) {
         if(request.getSession().getAttribute("user") != null)
             return "/blogAdmin";
-        return "/admin/login";
+        return "admin/login";
     }
 
     @PostMapping("login")
@@ -34,16 +34,16 @@ public class LoginController {
         User user = userService.checkUser(username, password);
         if (user == null) {
             redirectAttributes.addFlashAttribute("message", "用户名和密码错误");
-            return "redirect:/admin/login";
+            return "redirect:admin/login";
         }
         user.setPassword("");
         session.setAttribute("user", user);
-        return "/admin/loginMessage";
+        return "admin/loginMessage";
     }
 
     @GetMapping("logout")
     public String logout(HttpSession session) {
         session.removeAttribute("user");
-        return "redirect:/admin/login";
+        return "redirect:admin/login";
     }
 }

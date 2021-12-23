@@ -44,15 +44,15 @@ public class TypeController {
     public String postTypes(Type type, RedirectAttributes attributes){
         if("".equals(type.getName()) || typeService.insertType(type) == false){
             attributes.addFlashAttribute("message", "新增失败，不能添加重复的分类");
-            return "redirect:/admin/type/input";
+            return "redirect:admin/type/input";
         }
-        return "redirect:/admin/type";
+        return "redirect:admin/type";
     }
 
     @GetMapping("/type/{id}/delete")
     public String delete(@PathVariable Integer id, RedirectAttributes attributes) {
         typeService.deleteTypeById(id);
         attributes.addFlashAttribute("message", "删除成功");
-        return "redirect:/admin/type";
+        return "redirect:admin/type";
     }
 }

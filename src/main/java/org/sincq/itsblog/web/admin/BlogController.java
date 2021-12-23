@@ -9,11 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BlogController {
     @GetMapping("/blog")
     public String blogs(){
-        return "/admin/blogAdmin";
+        return "admin/blogAdmin";
     }
 
     @GetMapping("/tag")
     public String tag(){
-        return "/admin/blogTag";
+        return "admin/blogTag";
     }
 }
