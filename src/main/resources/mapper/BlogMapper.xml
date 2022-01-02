@@ -19,6 +19,7 @@
         <result property="subscribeMe" column="subscribeMe"/>
         <result property="shareStatement" column="shareStatement"/>
         <result property="commentable" column="commentable"/>
+        <result property="commentCount" column="commentCount"/>
         <result property="publish" column="publish"/>
         <result property="recommend" column="recommend"/>
         <result property="createTime" column="createTime"/>
@@ -28,10 +29,10 @@
     </resultMap>
 
     <insert id="saveBlog" parameterType="org.sincq.itsblog.entity.Blog">
-        insert into blog.t_blog (id, title, content, flag, views, subscribeMe, shareStatement, commentabled, publish,
+        insert into blog.t_blog (id, title, content, flag, views, subscribeMe, shareStatement, commentabled, commentCount, publish,
                                  recommend, createTime, updateTime, typeId, userId)
         values (#{id}, #{title}, #{content}, #{flag}, #{views}, #{subscribeMe},
-                #{shareStatement}, #{commentabled}, #{publish}, #{recommend}, #{createTime},
+                #{shareStatement}, #{commentabled}, #{publish}, #{commentCount}, #{recommend}, #{createTime},
                 #{updateTime}, #{typeId}, #{userId});
     </insert>
 
@@ -50,12 +51,14 @@
             subscribeMe    = #{subscribeMe},
             shareStatement = #{shareStatement},
             commentabled   = #{commentabled},
+            commentCount   = #{commentCount},
             publish        = #{publish},
             recommend      = #{recommend},
             createTime     = #{createTime},
             updateTime     = {updateTime},
             typeId = #{typeId},
             userId = #{userId}
+        where id = #{id}
     </update>
 
     <update id="updateTitle">
@@ -82,17 +85,30 @@
         where id = #{id}
     </update>
 
+    <update id="updateCommentCount">
+        update t_blog
+        set commentCount=#{commentCount}
+        where id = #{id}
+    </update>
+
     <update id="updateSubscribeMe">
         update t_blog
         set subscribeMe=#{subscribeMe}
         where id = #{id}
     </update>
 
+
     <update id="updateShareStatement">
         update t_blog
         set shareStatement={shareStatement}
         where id = #{id};
     </update>
+
+    <select id="getBlogById" resultType="org.sincq.itsblog.entity.Blog">
+        select *
+        from t_blog
+        where id = #{id}
+    </select>
 
     <select id="listAllBlog" resultType="org.sincq.itsblog.entity.Blog">
         select *

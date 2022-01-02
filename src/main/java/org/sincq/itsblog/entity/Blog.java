@@ -6,39 +6,40 @@ import java.util.List;
 
 
 public class Blog {
-    private Long id;
+    private Integer id;
     private String title;
     private String content;
     private String flag;
-    private Long views;
+    private Integer views;
     private boolean subscribeMe;
     private boolean shareStatement;
     private boolean commentable;
+    private Integer commentCount;
     private boolean publish;
     private boolean recommend;
     private Date createTime;
     private Date updateTime;
 
-    private Long typeId;
-    private Type type;
-    private Long userId;
-    private User user;
+    private Integer typeId;
+    private String typeName;
+    private Integer userId;
+    private String userName;
     private List<Comment> comments = new ArrayList<>();
 
-    public Type getType() {
-        return type;
+    public String getTypeName() {
+        return typeName;
     }
 
-    public void setType(Type type) {
-        this.type = type;
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
     }
 
-    public User getUser() {
-        return user;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public List<Comment> getComments() {
@@ -49,11 +50,11 @@ public class Blog {
         this.comments = comments;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -81,11 +82,11 @@ public class Blog {
         this.flag = flag;
     }
 
-    public Long getViews() {
+    public Integer getViews() {
         return views;
     }
 
-    public void setViews(Long views) {
+    public void setViews(Integer views) {
         this.views = views;
     }
 
@@ -128,10 +129,6 @@ public class Blog {
                 ", recommend=" + recommend +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
-                ", typeId=" + typeId +
-                ", type=" + type +
-                ", userId=" + userId +
-                ", user=" + user +
                 ", comments=" + comments +
                 '}';
     }
@@ -144,19 +141,19 @@ public class Blog {
         this.subscribeMe = subscribeMe;
     }
 
-    public Long getTypeId() {
+    public Integer getTypeId() {
         return typeId;
     }
 
-    public void setTypeId(Long typeId) {
+    public void setTypeId(Integer typeId) {
         this.typeId = typeId;
     }
 
-    public Long getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
@@ -190,6 +187,14 @@ public class Blog {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public Integer getCommentCount() {
+        return commentCount;
+    }
+
+    public void setCommentCount(Integer commentCount) {
+        this.commentCount = commentCount;
     }
 
 }

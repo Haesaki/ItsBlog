@@ -103,8 +103,10 @@
                         <td>推荐</td>
                         <td>时间</td>
                         <td>
-                            <a href="#" class="ui mini green basic button">编辑</a>
-                            <a href="#" class="ui mini red basic button">删除</a>
+<!--                            <a href="#" th:href="@{/admin/blog/{id}/input(id=${blog.id})}" class="ui mini green basic button">编辑</a>-->
+<!--                            <a href="#" th:href="@{/admin/blog/{id}/delete(id=${blog.id})}"-->
+<!--                               onclick="return confirm('确定要删除该文章？删除无法恢复（可以从GitHub的历史版本找到！）')"-->
+<!--                               class="ui mini red basic button">删除</a>-->
                         </td>
                     </tr>
                 </tbody>
@@ -115,7 +117,9 @@
                                 <a class="item">上一页</a>
                                 <a class="item">下一页</a>
                             </div>
-                            <button class="ui mini right floated basic orange button">新增</button>
+                            <a href="#" th:href="@{blog/input}">
+                                <button class="ui mini right floated basic orange button">新增</button>
+                            </a>
                         </th>
                     </tr>
                 </tfoot>

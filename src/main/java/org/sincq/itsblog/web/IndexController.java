@@ -42,6 +42,16 @@ public class IndexController {
 
     @GetMapping("/blogPublish")
     public String blogPublish(){
-        return "/admin/blogPublish";
+        return "admin/blogPublish";
+    }
+
+    @GetMapping("admin/blog")
+    public String adminblog(){
+        return "admin/blogAdmin";
+    }
+
+    @GetMapping("admin/tag")
+    public String tag(){
+        return "admin/blogTag";
     }
 }

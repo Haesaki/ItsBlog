@@ -29,11 +29,15 @@ public interface BlogMapper {
 
     void updateFlag(Long id, String flag);
 
-    void updateViews(Long id, Long views);
+    void updateViews(Long id, Integer views);
+
+    void updateCommentCount(Long id, Integer commentCount);
 
     void updateSubscribeMe(Long id, Boolean subscribeMe);
 
     void updateShareStatement(Long id, Boolean shareStatement);
+
+    void updateBlogById(Long id, Blog blog);
 
 //    void updateCommentable(Long id, Boolean commentable);
 //
@@ -49,5 +53,5 @@ public interface BlogMapper {
 //
 //    void updateUserId(Long id, Long userId);
 //
-//    Blog getBlogById(Long id);
+    Blog getBlogById(Long id);
 }
