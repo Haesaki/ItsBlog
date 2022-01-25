@@ -1,7 +1,8 @@
-package org.sincq.itsblog.service;
+package org.sincq.itsblog.service.Impl;
 
 import org.sincq.itsblog.dao.UserMapper;
 import org.sincq.itsblog.entity.User;
+import org.sincq.itsblog.service.UserService;
 import org.sincq.itsblog.util.MD5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -1,4 +1,4 @@
-package org.sincq.itsblog.web.admin;
+package org.sincq.itsblog.controller.admin;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;

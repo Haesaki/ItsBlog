@@ -1,14 +1,15 @@
-package org.sincq.itsblog.service;
+package org.sincq.itsblog.service.Impl;
 
 import org.sincq.itsblog.dao.TypeMapper;
 import org.sincq.itsblog.entity.Type;
+import org.sincq.itsblog.service.TypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.util.List;
 
 @Controller
-public class TypeServiceImpl implements TypeService{
+public class TypeServiceImpl implements TypeService {
     @Autowired
     TypeMapper typeMapper;
 
