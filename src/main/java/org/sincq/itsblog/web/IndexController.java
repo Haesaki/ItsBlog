@@ -30,10 +30,10 @@ public class IndexController {
         return "tags";
     }
 
-    @GetMapping("/type")
-    public String types(){
-        return "types";
-    }
+//    @GetMapping("/type")
+//    public String types(){
+//        return "types";
+//    }
 
     @GetMapping("/archive")
     public String archive(){

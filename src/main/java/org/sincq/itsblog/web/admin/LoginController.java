@@ -14,21 +14,22 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 @Controller
-@RequestMapping("/admin")
 public class LoginController {
 
     @Autowired
     UserService userService;
 
     // 拦截所有请求
-    @GetMapping
+    @GetMapping("admin")
     public String loginPage(HttpServletRequest request) {
-        if(request.getSession().getAttribute("user") != null)
-            return "/blogAdmin";
+        if(request.getSession().getAttribute("user") != null){
+            return "admin/blogAdmin";
+        }
+//            return "/blogAdmin";
         return "admin/login";
     }
 
-    @PostMapping("login")
+    @PostMapping("admin/login")
     public String login(@RequestParam String username, @RequestParam String password,
                         HttpSession session, RedirectAttributes redirectAttributes) {
         User user = userService.checkUser(username, password);
@@ -41,7 +42,7 @@ public class LoginController {
         return "admin/loginMessage";
     }
 
-    @GetMapping("logout")
+    @GetMapping("admin/logout")
     public String logout(HttpSession session) {
         session.removeAttribute("user");
         return "redirect:admin/login";

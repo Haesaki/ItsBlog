@@ -19,7 +19,6 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
-@RequestMapping("/admin")
 public class BlogController {
     @Autowired
     private BlogService blogService;
@@ -28,7 +27,7 @@ public class BlogController {
     private TypeService typeService;
 
     // go to the create blog page
-    @GetMapping("blog/input")
+    @GetMapping("admin/blog/input")
     public String crateBlog(Model model){
         model.addAttribute("types", typeService.getAllType());
         model.addAttribute("blog", new Blog());
@@ -36,7 +35,7 @@ public class BlogController {
     }
 
     // create new blog
-    @PostMapping("/blog")
+    @PostMapping("admin/blog")
     public String post(Blog blog, RedirectAttributes attributes, HttpSession session){
         User user = (User) session.getAttribute("user");
         blog.setUserName(user.getUsername());
@@ -52,7 +51,7 @@ public class BlogController {
     }
 
     // list of blogs
-    @RequestMapping("/blog")
+    @RequestMapping("admin/blog")
     public String listBlogs(Model model, @RequestParam(defaultValue = "1", value = "pageNum") Integer pageNum){
         String orderBy = "update_time desc";
         PageHelper.startPage(pageNum, 10, orderBy);

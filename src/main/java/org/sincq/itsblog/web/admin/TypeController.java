@@ -14,12 +14,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
 
 @Controller
-@RequestMapping("/admin")
+//@RequestMapping("/admin")
 public class TypeController {
     @Autowired
     TypeService typeService;
 
-    @GetMapping("/type")
+    @GetMapping("/admin/type")
     public String list(Model model,
                        @RequestParam(defaultValue = "1", value = "pageNum") Integer pageNum){
         PageHelper.startPage(pageNum, 10);
@@ -33,7 +33,7 @@ public class TypeController {
         return "admin/blogType";
     }
 
-    @GetMapping("/type/input")
+    @GetMapping("/admin/type/input")
     public String input(Model model){
         model.addAttribute("type", new Type());
         return "admin/blogTypeInput";
@@ -42,7 +42,7 @@ public class TypeController {
     // add new Types
     @PostMapping("/type")
     public String postTypes(Type type, RedirectAttributes attributes){
-        if("".equals(type.getName()) || typeService.insertType(type) == false){
+        if("".equals(type.getName()) || !typeService.insertType(type)){
             attributes.addFlashAttribute("message", "新增失败，不能添加重复的分类");
             return "redirect:admin/type/input";
         }
