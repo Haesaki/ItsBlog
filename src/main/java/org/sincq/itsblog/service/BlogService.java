@@ -9,6 +9,8 @@ public interface BlogService {
 
     Page<Blog> listBlog(SpringDataWebProperties.Pageable pageable, Blog blog);
 
+    Page<Blog> listAllBlog();
+
     int saveBlog(Blog blog);
 
     int updateBlog(Long id, Blog blog);

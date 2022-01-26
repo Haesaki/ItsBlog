@@ -12,8 +12,13 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class BlogServiceImpl implements BlogService {
-    @Autowired
     private BlogMapper blogMapper;
+
+    @Autowired
+    public void setBlogMapper(BlogMapper blogMapper){
+        this.blogMapper = blogMapper;
+        assert this.blogMapper != null;
+    }
 
     @Override
     public Blog getBlog(Long id) {
@@ -22,6 +27,11 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public Page<Blog> listBlog(SpringDataWebProperties.Pageable pageable, Blog blog) {
+        return null;
+    }
+
+    @Override
+    public Page<Blog> listAllBlog() {
         return null;
     }
 

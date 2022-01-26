@@ -55,8 +55,8 @@ public class BlogController {
     public String listBlogs(Model model, @RequestParam(defaultValue = "1", value = "pageNum") Integer pageNum){
         String orderBy = "update_time desc";
         PageHelper.startPage(pageNum, 10, orderBy);
-        List<Blog> blogList = blogService.getAllBlog();
-        PageInfo<Blog> pageInfo = new PageInfo<Blog>(blogList);
+        List<Blog> blogList = blogService.listAllBlog();
+        PageInfo<Blog> pageInfo = new PageInfo<>(blogList);
         model.addAttribute("types", typeService.getAllType());
         model.addAttribute("pageInfo", pageInfo);
         return "admin/blogAdmin";

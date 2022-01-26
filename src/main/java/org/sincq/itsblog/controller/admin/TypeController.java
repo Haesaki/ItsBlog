@@ -25,7 +25,7 @@ public class TypeController {
         PageHelper.startPage(pageNum, 10);
         List<Type> list = typeService.getAllType();
 
-        PageInfo<Type> pageInfo = new PageInfo<Type>(list);
+        PageInfo<Type> pageInfo = new PageInfo<>(list);
         System.out.println(pageInfo.getPageNum());
         System.out.println(pageInfo.getPageSize());
 
@@ -40,19 +40,23 @@ public class TypeController {
     }
 
     // add new Types
-    @PostMapping("/type")
+    @PostMapping("/admin/type")
     public String postTypes(Type type, RedirectAttributes attributes){
-        if("".equals(type.getName()) || !typeService.insertType(type)){
+        if("".equals(type.getName())){
+            attributes.addAttribute("message", "不能添加非空!");
+            return "redirect:admin/type/input";
+        }
+        if(!typeService.insertType(type)){
             attributes.addFlashAttribute("message", "新增失败，不能添加重复的分类");
             return "redirect:admin/type/input";
         }
-        return "redirect:admin/type";
+        return "redirect:/admin/type";
     }
 
-    @GetMapping("/type/{id}/delete")
+    @GetMapping("/admin/type/{id}/delete")
     public String delete(@PathVariable Integer id, RedirectAttributes attributes) {
         typeService.deleteTypeById(id);
         attributes.addFlashAttribute("message", "删除成功");
-        return "redirect:admin/type";
+        return "redirect:/admin/type";
     }
 }

@@ -54,7 +54,7 @@
 <!--middle content-->
 <div class="m-container m-padded-tb">
     <div class="ui container">
-        <form action="#" method="post" th:action="*{id}==null ? @{/type} : @{/type/{id}(id=*{id})} "
+        <form action="#" method="post" th:action="*{id}==null ? @{/admin/type} : @{/type/{id}(id=*{id})} "
               class="ui form">
             <input type="hidden" name="id" th:value="${type.getId()}">
             <div class=" field">
