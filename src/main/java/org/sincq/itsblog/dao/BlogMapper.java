@@ -2,6 +2,7 @@ package org.sincq.itsblog.dao;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 import org.sincq.itsblog.entity.Blog;
 import org.sincq.itsblog.entity.Type;
 import org.sincq.itsblog.entity.User;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @Mapper
 public interface BlogMapper {
+
     List<Blog> listAllBlog();
 
     // numPerPage   每一页多少博客
@@ -21,37 +23,37 @@ public interface BlogMapper {
 
     int saveBlog(Blog blog);
 
-    void deleteBlog(Long id);
+    void deleteBlog(Integer id);
 
-    void updateTitle(@Param("id") Long id, @Param("title") String title);
+    void updateTitle(@Param("id") Integer id, @Param("title") String title);
 
-    void updateContent(Long id, String content);
+    void updateContent(Integer id, String content);
 
-    void updateFlag(Long id, String flag);
+    void updateFlag(Integer id, String flag);
 
-    void updateViews(Long id, Integer views);
+    void updateViews(Integer id, Integer views);
 
-    void updateCommentCount(Long id, Integer commentCount);
+    void updateCommentCount(Integer id, Integer commentCount);
 
-    void updateSubscribeMe(Long id, Boolean subscribeMe);
+    void updateSubscribeMe(Integer id, Boolean subscribeMe);
 
-    void updateShareStatement(Long id, Boolean shareStatement);
+    void updateShareStatement(Integer id, Boolean shareStatement);
 
-    void updateBlogById(Long id, Blog blog);
+    void updateBlogById(Integer id, Blog blog);
 
-//    void updateCommentable(Long id, Boolean commentable);
+//    void updateCommentable(Integer id, Boolean commentable);
 //
-//    void updatePublish(Long id, Boolean publish);
+//    void updatePublish(Integer id, Boolean publish);
 //
-//    void updateRecommend(Long id, Boolean recommend);
+//    void updateRecommend(Integer id, Boolean recommend);
 //
-//    void updateCreateTime(Long id, Date createTime);
+//    void updateCreateTime(Integer id, Date createTime);
 //
-//    void updateUpdateTime(Long id, Date updateTime);
+//    void updateUpdateTime(Integer id, Date updateTime);
 //
-//    void updateTypeId(Long id, Long typeId);
+//    void updateTypeId(Integer id, Integer typeId);
 //
-//    void updateUserId(Long id, Long userId);
+//    void updateUserId(Integer id, Integer userId);
 //
-    Blog getBlogById(Long id);
+    Blog getBlogById(Integer id);
 }

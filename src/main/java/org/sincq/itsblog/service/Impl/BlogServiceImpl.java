@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.stereotype.Controller;
 
+import java.util.List;
+
 @Controller
 public class BlogServiceImpl implements BlogService {
     private BlogMapper blogMapper;
@@ -21,18 +23,18 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public Blog getBlog(Long id) {
+    public Blog getBlog(Integer id) {
         return blogMapper.getBlogById(id);
     }
 
     @Override
-    public Page<Blog> listBlog(SpringDataWebProperties.Pageable pageable, Blog blog) {
+    public List<Blog> listBlog(SpringDataWebProperties.Pageable pageable, Blog blog) {
         return null;
     }
 
     @Override
-    public Page<Blog> listAllBlog() {
-        return null;
+    public List<Blog> listAllBlog() {
+        return blogMapper.listAllBlog();
     }
 
     @Override
@@ -41,7 +43,7 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public int updateBlog(Long id, Blog blog) {
+    public int updateBlog(Integer id, Blog blog) {
         Blog b = blogMapper.getBlogById(id);
         if(b == null){
             throw  new NotFoundException("该博客不存在");
@@ -51,7 +53,7 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public void deleteBlog(Long id) {
+    public void deleteBlog(Integer id) {
         blogMapper.deleteBlog(id);
     }
 }

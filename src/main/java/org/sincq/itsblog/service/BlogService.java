@@ -4,16 +4,18 @@ import com.github.pagehelper.Page;
 import org.sincq.itsblog.entity.Blog;
 import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 
+import java.util.List;
+
 public interface BlogService {
-    Blog getBlog(Long id);
+    Blog getBlog(Integer id);
 
-    Page<Blog> listBlog(SpringDataWebProperties.Pageable pageable, Blog blog);
+    List<Blog> listBlog(SpringDataWebProperties.Pageable pageable, Blog blog);
 
-    Page<Blog> listAllBlog();
+    List<Blog> listAllBlog();
 
     int saveBlog(Blog blog);
 
-    int updateBlog(Long id, Blog blog);
+    int updateBlog(Integer id, Blog blog);
 
-    void deleteBlog(Long id);
+    void deleteBlog(Integer id);
 }

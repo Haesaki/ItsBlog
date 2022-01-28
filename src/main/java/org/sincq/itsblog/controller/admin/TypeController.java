@@ -24,11 +24,9 @@ public class TypeController {
                        @RequestParam(defaultValue = "1", value = "pageNum") Integer pageNum){
         PageHelper.startPage(pageNum, 10);
         List<Type> list = typeService.getAllType();
-
         PageInfo<Type> pageInfo = new PageInfo<>(list);
-        System.out.println(pageInfo.getPageNum());
-        System.out.println(pageInfo.getPageSize());
-
+//        System.out.println(pageInfo.getPageNum());
+//        System.out.println(pageInfo.getPageSize());
         model.addAttribute("pageInfo", pageInfo);
         return "admin/blogType";
     }

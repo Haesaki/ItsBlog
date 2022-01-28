@@ -37,19 +37,4 @@ public class IndexController {
     public String archive(){
         return "archives";
     }
-
-    @GetMapping("/blogPublish")
-    public String blogPublish(){
-        return "admin/blogPublish";
-    }
-
-    @GetMapping("admin/blog")
-    public String adminblog(){
-        return "admin/blogAdmin";
-    }
-
-    @GetMapping("admin/tag")
-    public String tag(){
-        return "admin/blogTag";
-    }
 }
