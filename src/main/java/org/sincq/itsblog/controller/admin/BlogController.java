@@ -96,10 +96,10 @@ public class BlogController {
     @PostMapping("admin/blog/search")
     public String search(Blog blog, Model model,
                          @RequestParam(defaultValue = "1", value = "pageNum") Integer pageNum) {
-//        List<Blog> blogBySearch = blogService.getBlogBySearch(searchBlog);
-//        PageHelper.startPage(pageNum, 10);
-//        PageInfo<Blog> pageInfo = new PageInfo<>(blogBySearch);
-//        model.addAttribute("pageInfo", pageInfo);
+        List<Blog> blogBySearch = blogService.getBlogBySearch(searchBlog);
+        PageHelper.startPage(pageNum, 10);
+        PageInfo<Blog> pageInfo = new PageInfo<>(blogBySearch);
+        model.addAttribute("pageInfo", pageInfo);
         return "redirect:/admin/blog";
     }
 }
