@@ -50,7 +50,7 @@ public class BlogController {
     public String post(Blog blog, RedirectAttributes attributes, HttpSession session){
         User user = (User) session.getAttribute("user");
         blog.setUserName(user.getUsername());
-        blog.setTypeName(typeService.getTypeById(blog.getTypeId()).getName());
+//        blog.setTypeName(typeService.getTypeById(blog.getTypeId()).getName());
 
         int ret = blogService.saveBlog(blog);
         if(ret == 0){

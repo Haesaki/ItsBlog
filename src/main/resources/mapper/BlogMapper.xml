@@ -26,14 +26,17 @@
         <result property="updateTime" column="updateTime"/>
         <result property="typeId" column="typeId"/>
         <result property="userId" column="userId"/>
+        <result property="userName" column="userName"/>
+        <result property="typeName" column="typeName"/>
     </resultMap>
 
     <insert id="saveBlog" parameterType="org.sincq.itsblog.entity.Blog">
-        insert into blog.t_blog (id, title, content, flag, views, subscribeMe, shareStatement, commentabled, commentCount, publish,
-                                 recommend, createTime, updateTime, typeId, userId)
+        insert into blog.t_blog (id, title, content, flag, views, subscribeMe, shareStatement, commentable,
+                                 commentCount, publish,
+                                 recommend, createTime, updateTime, typeId, userId, userName, typeName)
         values (#{id}, #{title}, #{content}, #{flag}, #{views}, #{subscribeMe},
-                #{shareStatement}, #{commentabled}, #{publish}, #{commentCount}, #{recommend}, #{createTime},
-                #{updateTime}, #{typeId}, #{userId});
+                #{shareStatement}, #{commentable}, #{publish}, #{commentCount}, #{recommend}, #{createTime},
+                #{updateTime}, #{typeId}, #{userId}, #{userName}, #{typeName});
     </insert>
 
     <delete id="deleteBlog">
@@ -50,14 +53,16 @@
             views          = #{views},
             subscribeMe    = #{subscribeMe},
             shareStatement = #{shareStatement},
-            commentabled   = #{commentabled},
+            commentable    = #{commentable},
             commentCount   = #{commentCount},
             publish        = #{publish},
             recommend      = #{recommend},
             createTime     = #{createTime},
-            updateTime     = {updateTime},
-            typeId = #{typeId},
-            userId = #{userId}
+            updateTime     = #{updateTime},
+            typeId         = #{typeId},
+            userId         = #{userId},
+            userName       = #{userName},
+            typeName       = #{typeName}
         where id = #{id}
     </update>
 
@@ -100,7 +105,7 @@
 
     <update id="updateShareStatement">
         update t_blog
-        set shareStatement={shareStatement}
+        set shareStatement = #{shareStatement}
         where id = #{id};
     </update>
 
@@ -115,18 +120,20 @@
         from t_blog
     </select>
 
-    <select id="listBlogInPage" resultType="org.sincq.itsblog.entity.Blog">
-        BEGIN
-            SET
-        N := numPerPage * (pageNum - 1);
-        RETURN (
-            SELECT *
-            FROM t_blog LIMIT N, numPerPage
-            );
-        END
-        SELECT *
-        FROM t_blog
-    </select>
+    <!--    <select id="listBlogInPage" resultType="org.sincq.itsblog.entity.Blog">-->
+    <!--        BEGIN-->
+    <!--        SET-->
+    <!--            N := numPerPage * (pageNum - 1);-->
+    <!--        RETURN-->
+    <!--        (-->
+    <!--            SELECT *-->
+    <!--            FROM t_blog-->
+    <!--            LIMIT N, numPerPage-->
+    <!--        );-->
+    <!--        END-->
+    <!--        SELECT *-->
+    <!--        FROM t_blog-->
+    <!--    </select>-->
 
     <select id="listAllRecommendBlog" resultType="org.sincq.itsblog.entity.Blog">
         SELECT *
@@ -135,11 +142,11 @@
     </select>
 </mapper>
 
-<!--        org.springframework.jdbc.BadSqlGrammarException:-->
-<!--        ### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Unknown column 'update_time' in 'order clause'-->
-<!--        ### The error may exist in file [C:\Users\laoha\IdeaProjects\ItsBlog\target\classes\mapper\BlogMapper.xml]-->
-<!--        ### The error may involve defaultParameterMap-->
-<!--        ### The error occurred while setting parameters-->
-<!--        ### SQL: SELECT * FROM t_blog order by update_time desc  LIMIT ?-->
-<!--        ### Cause: java.sql.SQLSyntaxErrorException: Unknown column 'update_time' in 'order clause'-->
-<!--        ; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Unknown column 'update_time' in 'order clause'-->
+        <!--        org.springframework.jdbc.BadSqlGrammarException:-->
+        <!--        ### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Unknown column 'update_time' in 'order clause'-->
+        <!--        ### The error may exist in file [C:\Users\laoha\IdeaProjects\ItsBlog\target\classes\mapper\BlogMapper.xml]-->
+        <!--        ### The error may involve defaultParameterMap-->
+        <!--        ### The error occurred while setting parameters-->
+        <!--        ### SQL: SELECT * FROM t_blog order by update_time desc  LIMIT ?-->
+        <!--        ### Cause: java.sql.SQLSyntaxErrorException: Unknown column 'update_time' in 'order clause'-->
+        <!--        ; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Unknown column 'update_time' in 'order clause'-->

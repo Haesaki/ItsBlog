@@ -96,14 +96,14 @@
 <footer th:replace="admin/fragmentAdminTemplate :: foot" class="ui inverted vertical segment m-padded-tb-large"
         style="bottom: 0% !important;">
     <div class="ui center aligned container">
-        <!-- <h4 class="ui inverted header">Copyright | Designed by QXC</h4> -->
+        <!-- <h4 class="ui inverted header">Copyright | Designed by</h4> -->
         <h4 class="ui inverted header">Copyright | Designed by SINCQ</h4>
     </div>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 <script src="../../static/lib/editormd/editormd.min.js"></script>
-<script src="@{/lib/editormd/editormd.min.js}"></script>
+<script th:src="@{/lib/editormd/editormd.min.js}"></script>
 <script>
     $('.ui.form').form({
         fields: {

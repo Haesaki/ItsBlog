@@ -13,12 +13,14 @@ public class Blog {
     private String content;
     private String flag;
     private Integer views;
-    private boolean subscribeMe;
-    private boolean shareStatement;
-    private boolean commentable;
     private Integer commentCount;
-    private boolean publish;
+
     private boolean recommend;
+    private boolean shareStatement;
+    private boolean subscribeMe;
+    private boolean commentable;
+    private boolean publish;
+
     private Date createTime;
     private Date updateTime;
 
@@ -26,5 +28,5 @@ public class Blog {
     private String typeName;
     private Integer userId;
     private String userName;
-    private List<Comment> comments = new ArrayList<>();
+//    private List<Comment> comments = new ArrayList<>();
 }
