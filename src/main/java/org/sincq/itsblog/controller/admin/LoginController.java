@@ -22,7 +22,7 @@ public class LoginController {
     @GetMapping("admin")
     public String loginPage(HttpServletRequest request) {
         if(request.getSession().getAttribute("user") != null){
-            return "admin/blogAdmin";
+            return "admin/loginMessage";
         }
 //            return "/blogAdmin";
         return "admin/login";
