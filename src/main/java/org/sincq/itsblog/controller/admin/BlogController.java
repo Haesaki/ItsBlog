@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -50,6 +53,11 @@ public class BlogController {
     public String post(Blog blog, RedirectAttributes attributes, HttpSession session){
         User user = (User) session.getAttribute("user");
         blog.setUserName(user.getUsername());
+        blog.setCreateTime(new Date());
+        blog.setUpdateTime(new Date());
+
+        blog.setViews(0);
+
 //        blog.setTypeName(typeService.getTypeById(blog.getTypeId()).getName());
 
         int ret = blogService.saveBlog(blog);
