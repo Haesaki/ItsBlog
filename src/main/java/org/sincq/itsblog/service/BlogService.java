@@ -3,6 +3,7 @@ package org.sincq.itsblog.service;
 import com.github.pagehelper.Page;
 import org.sincq.itsblog.entity.Blog;
 import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 

@@ -23,7 +23,7 @@
             <a th:href="index" class="item m-item m-mobild-hide" th:classappend="${n==1} ? 'active'">首页</a>
             <a th:href="tag" class="item m-item m-mobild-hide" th:classappend="${n==2} ? 'active'">标签</a>
             <a th:href="archive" class="item m-item m-mobild-hide" th:classappend="${n==3} ? 'active'">归档</a>
-            <a th:href="me" class="item m-item m-mobild-hide" th:classappend="${n==4} ? 'active'">关于我</a>
+            <a th:href="aboutme" class="item m-item m-mobild-hide" th:classappend="${n==4} ? 'active'">关于我</a>
             <div class="right item m-item m-mobild-hide">
                 <div class="ui icon inverted transparent input">
                     <input type="text" placeholder="搜索...">
@@ -37,10 +37,20 @@
 <footer th:fragment="foot" class="ui attached vertical header stick-bottom-footer" style="width: 100% !important; color: black !important">
     <div class="ui center aligned container">
         <!-- <h4 class="ui inverted header">Copyright | Designed by QXC</h4> -->
-        <h4 class="ui header">我的博客已营业：<span id="totalRunTime" class="ui text"></span> (*๓´╰╯`๓)</h4>
-        <h4 class="ui header">Copyright | Designed by SINCQ</h4>
+        <h4 class="ui header">已营业：<span id="totalRunTime" class="ui text"></span> ੭˙ᗜ˙)੭</h4>
+        <h3 style="color: #F08047" class="ui header">Copyright | Designed by SINCQ</h3>
     </div>
 </footer>
+<!--底部, 我认为我不需要底部的内容，不需要这么麻烦-->
+<!--<footer th:fragment="foot" class="ui inverted vertical segment">-->
+<!--    &lt;!&ndash;容器&ndash;&gt;-->
+<!--    <div class="ui center aligned container">-->
+<!--        <div style="color: #F08047" class="ui inverted m-text-thin">-->
+<!--            已营业：<span id="totalRunTime" class="ui text"></span> ੭˙ᗜ˙)੭-->
+<!--        </div>-->
+<!--        <h3 style="color: #F08047" class="ui header">Copyright | Designed by SINCQ</h3>-->
+<!--    </div>-->
+<!--</footer>-->
 
 
 <script th:fragment="blogTotalRuntime">

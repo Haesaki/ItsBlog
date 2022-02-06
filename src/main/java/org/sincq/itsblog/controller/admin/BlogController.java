@@ -5,8 +5,8 @@ import com.github.pagehelper.PageInfo;
 import org.sincq.itsblog.entity.Blog;
 import org.sincq.itsblog.entity.Type;
 import org.sincq.itsblog.entity.User;
-import org.sincq.itsblog.service.BlogService;
-import org.sincq.itsblog.service.TypeService;
+import org.sincq.itsblog.service.Impl.BlogServiceImpl;
+import org.sincq.itsblog.service.Impl.TypeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Controller;
@@ -15,18 +15,16 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
 @Controller
 public class BlogController {
     @Autowired
-    private BlogService blogService;
+    private BlogServiceImpl blogService;
 
     @Autowired
-    private TypeService typeService;
+    private TypeServiceImpl typeService;
 
     // list of blogs
     @RequestMapping("admin/blog")
