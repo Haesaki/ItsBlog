@@ -35,11 +35,12 @@ public class IndexController {
                         || ch == '.' || ch == '!' || ch == '。' || ch == '！'
                         || ch == '?' || ch == '？' || ch == ' ') {
                     sb.append(ch);
-                    if(sb.length() > 10){
+                    if(sb.length() > 100){
                         break;
                     }
                 }
             }
+            sb.append(".....");
             blog.setContent(sb.toString());
         }
         PageInfo<Blog> pageInfo = new PageInfo<>(list);

@@ -54,126 +54,61 @@
                     <!-- 中间博客内容 -->
                     <div class="ui padded attached segment" th:each="blog : ${pageInfo.list}">
                         <div class="ui vertical segment m-padded-tb-large">
-                            <div class="ui mobile reversed stackable grid">
-                                <div class="ui large aligned mobile reversed stackable grid">
-                                    <!--博文信息-->
-                                    <div class="eleven wide column ">
-                                        <h3 class="ui header"><a href="#" th:href="@{/blog/{id}(id=${blog.id})}"
-                                                                 target="_blank" class="m-black m-title-font"
-                                                                 th:text="${blog.title}">TEST</a></h3>
-                                        <p class="m-text m-margin-top-max" th:text="${blog.content}">testtesttest
-                                            ajkfjlasdlfoinasldfknaslkdfjklasdfkaslkdjfkjielkajfkldjfiaslkdfjalsidjfiaklsdjfaskldj</p>
-                                        <div class="ui m-margin-top-max grid">
-                                            <div class="eleven wide column">
-                                                <div class="ui mini horizontal link list">
-                                                    <div class="item">
-                                                        <i class="calendar icon"></i><span
-                                                            th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2020-01-01</span>
-                                                    </div>
-                                                    <div class="item">
-                                                        <i class="eye icon"></i> <span
-                                                            th:text="${blog.views}">2222</span>
-                                                    </div>
-                                                    <div class="item">
-                                                        <i class="comment outline icon"></i> <span
-                                                            th:text="${blog.commentCount}">2222</span>
-                                                    </div>
+                            <!--   <div class="ui mobile reversed stackable grid">-->
+                            <div class="ui large aligned mobile reversed stackable grid">
+                                <!--博文信息-->
+                                <div class="eleven wide column ">
+                                    <h3 class="ui header"><a href="#" th:href="@{/blog/{id}(id=${blog.id})}"
+                                                             target="_blank" class="m-black m-title-font"
+                                                             th:text="${blog.title}">TEST</a></h3>
+                                    <p class="m-text m-margin-top-max" th:text="${blog.content}">testtesttest
+                                        ajkfjlasdlfoinasldfknaslkdfjklasdfkaslkdjfkjielkajfkldjfiaslkdfjalsidjfiaklsdjfaskldj</p>
+                                    <div class="ui m-margin-top-max grid">
+                                        <div class="eleven wide column">
+                                            <div class="ui mini horizontal link list">
+                                                <div class="item">
+                                                    <i class="calendar icon"></i><span
+                                                        th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2020-01-01</span>
+                                                </div>
+                                                <div class="item">
+                                                    <i class="eye icon"></i> <span
+                                                        th:text="${blog.views}">2222</span>
+                                                </div>
+                                                <div class="item">
+                                                    <i class="comment outline icon"></i> <span
+                                                        th:text="${blog.commentCount}">2222</span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <!--                                &lt;!&ndash; 博客主体部分 &ndash;&gt;-->
-                                <!--                                <div class="ui eleven wide column">-->
-                                <!--                                    <h3 class="ui header">Add Title</h3>-->
-                                <!--                                    <p>haiodfj aisdlfjlas ioashjdflj oiasjdf saojdfj ioasjdfijp aisjdf ia aisjdfioja-->
-                                <!--                                        paisjdf paosidjf </p>-->
-                                <!--                                </div>-->
-
-                                <!--                                &lt;!&ndash; 博客图片 &ndash;&gt;-->
-                                <!--                                <div class="five wide column">-->
-                                <!--                                    <a href="#" target="_blank">-->
-                                <!--                                        <img src="@{/static/images/1.png}"-->
-                                <!--                                             alt="" class="ui rounded image">-->
-                                <!--                                    </a>-->
-                                <!--                                </div>-->
                             </div>
+                            <!--  </div>-->
                         </div>
                     </div>
 
                     <!-- 尾部翻页按钮 -->
-                    <div class="ui bottom attached segment">
-                        <div class="ui middle aligned two column grid">
-                            <div class="column">
-                                <a href="#" class="ui orange button">上一页</a>
-                            </div>
-                            <div class="right aligned column">
-                                <a href="#" class="ui orange button">下一页</a>
-                            </div>
+                    <div class="ui bottom attached segment m-opacity stackable grid">
+                        <div class="three wide column" align="center">
+                            <a class="item" th:href="@{/(pageNum=${pageInfo.hasPreviousPage}?${pageInfo.prePage}:1)}"
+                               th:unless="${pageInfo.isFirstPage}">上一页</a>
+                        </div>
+
+                        <div class="ten wide column" align="center">
+                            <p><span th:text="${pageInfo.pageNum}"></span> / <span th:text="${pageInfo.pages}"></span>
+                            </p>
+                        </div>
+
+                        <div class="three wide column" align="center">
+                            <a class="item"
+                               th:href="@{/(pageNum=${pageInfo.hasNextPage}?${pageInfo.nextPage}:${pageInfo.pages})}"
+                               th:unless="${pageInfo.isLastPage}">下一页</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-<!--    &lt;!&ndash;中间内容&ndash;&gt;-->
-<!--    <div class="m-padded-tb-big animated fadeIn">-->
-<!--        <div class="ui container">-->
-<!--            <div class="ui stackable grid">-->
-<!--                &lt;!&ndash;博文列表&ndash;&gt;-->
-<!--                <div class="ui padded segment" th:each="blog : ${pageInfo.list}">-->
-<!--                    <div class="ui large aligned mobile reversed stackable grid">-->
-<!--                        &lt;!&ndash;博文信息&ndash;&gt;-->
-<!--                        <div class="eleven wide column ">-->
-<!--                            <h3 class="ui header"><a href="#" th:href="@{/blog/{id}(id=${blog.id})}"-->
-<!--                                                     target="_blank" class="m-black m-title-font"-->
-<!--                                                     th:text="${blog.title}">TEST</a></h3>-->
-<!--                            <p class="m-text m-margin-top-max" th:text="${blog.content}">testtesttest-->
-<!--                                ajkfjlasdlfoinasldfknaslkdfjklasdfkaslkdjfkjielkajfkldjfiaslkdfjalsidjfiaklsdjfaskldj</p>-->
-<!--                            <div class="ui m-margin-top-max grid">-->
-<!--                                <div class="eleven wide column">-->
-<!--                                    <div class="ui mini horizontal link list">-->
-<!--                                        <div class="item">-->
-<!--                                            <i class="calendar icon"></i><span-->
-<!--                                                th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}">2020-01-01</span>-->
-<!--                                        </div>-->
-<!--                                        <div class="item">-->
-<!--                                            <i class="eye icon"></i> <span th:text="${blog.views}">2222</span>-->
-<!--                                        </div>-->
-<!--                                        <div class="item">-->
-<!--                                            <i class="comment outline icon"></i> <span-->
-<!--                                                th:text="${blog.commentCount}">2222</span>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            &lt;!&ndash;分页&ndash;&gt;-->
-<!--            <div class="ui bottom attached segment m-opacity stackable grid">-->
-<!--                <div class="three wide column" align="center">-->
-<!--                    <a class="item" th:href="@{/(pageNum=${pageInfo.hasPreviousPage}?${pageInfo.prePage}:1)}"-->
-<!--                       th:unless="${pageInfo.isFirstPage}">上一页</a>-->
-<!--                </div>-->
-
-<!--                <div class="ten wide column" align="center">-->
-<!--                    <p><span th:text="${pageInfo.pageNum}"></span> / <span th:text="${pageInfo.pages}"></span>-->
-<!--                    </p>-->
-<!--                </div>-->
-
-<!--                <div class="three wide column" align="center">-->
-<!--                    <a class="item"-->
-<!--                       th:href="@{/(pageNum=${pageInfo.hasNextPage}?${pageInfo.nextPage}:${pageInfo.pages})}"-->
-<!--                       th:unless="${pageInfo.isLastPage}">下一页</a>-->
-<!--                </div>-->
-<!--            </div>-->
-
-<!--        </div>-->
-<!--    </div>-->
-
 </div>
 
 <!--底部, 我认为我不需要底部的内容，不需要这么麻烦-->
