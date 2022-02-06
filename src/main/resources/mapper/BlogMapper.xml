@@ -140,6 +140,13 @@
         FROM t_blog
         WHERE recommend = true
     </select>
+    <select id="getSearchBlog" resultType="org.sincq.itsblog.entity.Blog">
+        <bind name="pattern" value="'%' + query + '%'" />
+        select *
+        from t_blog b
+        where b.title like #{pattern} or b.content like  #{pattern}
+        order by updateTime desc
+    </select>
 </mapper>
 
         <!--        org.springframework.jdbc.BadSqlGrammarException:-->

@@ -12,6 +12,8 @@ public interface BlogService {
 
     List<Blog> listBlog(SpringDataWebProperties.Pageable pageable, Blog blog);
 
+    List<Blog> getSearchBlog(String blog);
+
     List<Blog> listAllBlog();
 
     int saveBlog(Blog blog);

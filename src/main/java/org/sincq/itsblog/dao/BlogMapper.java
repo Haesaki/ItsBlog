@@ -15,6 +15,7 @@ public interface BlogMapper {
 
     List<Blog> listAllBlog();
 
+    List<Blog> getSearchBlog(String blog);
     // numPerPage   每一页多少博客
     // PageNum      第几页
 //    List<Blog> listBlogInPage(@Param("numPerPage") int numPerPage, @Param("PageNum") int PageNum);

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -22,23 +23,68 @@ public class IndexController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @GetMapping("/")
-    public String index() {
+    public String index(Model model, @RequestParam(defaultValue = "1", value = "pageNum") Integer pageNum) {
+        String orderBy = "updateTime desc";
+        PageHelper.startPage(pageNum, 10, orderBy);
+        List<Blog> list = blogService.listAllBlog();
+        for (Blog blog : list) {
+            String content = blog.getContent();
+            StringBuilder sb = new StringBuilder();
+            for (char ch : content.toCharArray()) {
+                if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')
+                        || ch == '.' || ch == '!' || ch == '。' || ch == '！'
+                        || ch == '?' || ch == '？' || ch == ' ') {
+                    sb.append(ch);
+                    if(sb.length() > 10){
+                        break;
+                    }
+                }
+            }
+            blog.setContent(sb.toString());
+        }
+        PageInfo<Blog> pageInfo = new PageInfo<>(list);
+        model.addAttribute("pageInfo", pageInfo);
         return "index";
     }
-
-//    @GetMapping("/index")
-//    public String getIndex(){
-//        return "index";
-//    }
 
     @GetMapping("/index")
     public String listBlogs(Model model, @RequestParam(defaultValue = "1", value = "pageNum") Integer pageNum) {
         String orderBy = "updateTime desc";
-        PageHelper.startPage(pageNum, 10, orderBy);
+        PageHelper.startPage(1, 10, orderBy);
         List<Blog> list = blogService.listAllBlog();
+        for (Blog blog : list) {
+            String content = blog.getContent();
+            StringBuilder sb = new StringBuilder();
+            for (char ch : content.toCharArray()) {
+                if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')
+                        || ch == '.' || ch == '!' || ch == '。' || ch == '！'
+                        || ch == '?' || ch == '？' || ch == ' ') {
+                    sb.append(ch);
+                    if(sb.length() > 100){
+                        break;
+                    }
+                }
+            }
+            sb.append(".....");
+            blog.setContent(sb.toString());
+        }
         PageInfo<Blog> pageInfo = new PageInfo<>(list);
         model.addAttribute("pageInfo", pageInfo);
         return "index";
+    }
+
+    //搜索博客
+    @PostMapping("/search")
+    public String search(Model model,
+                         @RequestParam(defaultValue = "1", value = "pageNum") Integer pageNum,
+                         @RequestParam String query) {
+        PageHelper.startPage(pageNum, 1000);
+        List<Blog> searchBlog = blogService.getSearchBlog(query);
+
+        PageInfo<Blog> pageInfo = new PageInfo<>(searchBlog);
+        model.addAttribute("pageInfo", pageInfo);
+        model.addAttribute("query", query);
+        return "search";
     }
 
     @GetMapping("/blog")
@@ -51,7 +97,7 @@ public class IndexController {
         return "tags";
     }
 
-    @GetMapping("/about")
+    @GetMapping("/aboutme")
     public String aboutme() {
         return "aboutme";
     }

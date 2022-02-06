@@ -33,6 +33,11 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
+    public List<Blog> getSearchBlog(String blog){
+        return null;
+    }
+
+    @Override
     public List<Blog> listAllBlog() {
         return blogMapper.listAllBlog();
     }
