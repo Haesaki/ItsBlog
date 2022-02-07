@@ -7,7 +7,8 @@ body {
 .stick-bottom-wrapper {
     position: relative !important;
     min-height: 99% !important;
-    padding-bottom: 300px !important;
+    padding-bottom: 150px !important;
+    /*padding-bottom: 300px !important;*/
 }
 
 .stick-bottom-footer {

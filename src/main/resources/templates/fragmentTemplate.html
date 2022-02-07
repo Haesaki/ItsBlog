@@ -20,10 +20,10 @@
         <div class="ui inverted stackable menu">
             <h1 class="ui orange header item">SINCQ</h1>
             <!-- <h1 class="ui green header item y">QXC</h1> -->
-            <a th:href="index" class="item m-item m-mobild-hide" th:classappend="${n==1} ? 'active'">首页</a>
-            <a th:href="tag" class="item m-item m-mobild-hide" th:classappend="${n==2} ? 'active'">标签</a>
-<!--            <a th:href="archive" class="item m-item m-mobild-hide" th:classappend="${n==3} ? 'active'">归档</a>-->
-            <a th:href="aboutme" class="item m-item m-mobild-hide" th:classappend="${n==4} ? 'active'">关于我</a>
+            <a th:href="@{/index}" class="item m-item m-mobild-hide" th:classappend="${n==1} ? 'active'">首页</a>
+            <a th:href="@{/tag}" class="item m-item m-mobild-hide" th:classappend="${n==2} ? 'active'">标签</a>
+            <!--            <a th:href="archive" class="item m-item m-mobild-hide" th:classappend="${n==3} ? 'active'">归档</a>-->
+            <a th:href="@{/aboutme}" class="item m-item m-mobild-hide" th:classappend="${n==4} ? 'active'">关于我</a>
             <div class="right item m-item m-mobild-hide">
                 <div class="ui icon inverted transparent input">
                     <input type="text" placeholder="搜索...">
@@ -78,6 +78,7 @@
             document.getElementById("totalRunTime").innerHTML = hours + "小时" + mins + "分钟" + secs + "秒";
         }
     }
+
     CalRunTime()
     setInterval("CalRunTime()", 36000);
 

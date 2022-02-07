@@ -10,7 +10,7 @@ import java.util.List;
 public class Comment {
 
     private Long id;
-    private String nickname;
+    private String name;
     private String email;
     private String content;
 

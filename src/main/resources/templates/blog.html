@@ -14,293 +14,286 @@
 </head>
 
 <body>
-    <div class="stick-bottom-wrapper">
-        <!--导航-->
-        <nav th:replace="fragmentTemplate :: menu(0)" class="ui inverted attached segment m-padded-tb-mini">
-            <div class="ui container">
-                <div class="ui inverted stackable menu">
-                    <h1 class="ui orange header item">SINCQ</h1>
-                    <!-- <h1 class="ui green header item y">QXC</h1> -->
-                    <a href="#" class="item m-item m-mobild-hide">首页</a>
-                    <a href="#" class="item m-item m-mobild-hide">标签</a>
-                    <a href="#" class="item m-item m-mobild-hide">关于我</a>
-                    <div class="right item m-item m-mobild-hide">
-                        <div class="ui icon inverted transparent input">
-                            <input type="text" placeholder="搜索...">
+<!--<div class="stick-bottom-wrapper">-->
+<div>
+    <!--导航-->
+    <nav th:replace="fragmentTemplate :: menu(0)" class="ui inverted attached segment m-padded-tb-mini">
+        <div class="ui container">
+            <div class="ui inverted stackable menu">
+                <h1 class="ui orange header item">SINCQ</h1>
+                <!-- <h1 class="ui green header item y">QXC</h1> -->
+                <a href="#" class="item m-item m-mobild-hide">首页</a>
+                <a href="#" class="item m-item m-mobild-hide">标签</a>
+                <a href="#" class="item m-item m-mobild-hide">关于我</a>
+                <div class="right item m-item m-mobild-hide">
+                    <div class="ui icon inverted transparent input">
+                        <input type="text" placeholder="搜索...">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- button -->
+        <button class="ui menu toggle black icon button m-right-top m-mobile-show">
+            <i class="sidebar icon"></i>
+        </button>
+        <!-- <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
+            <i class="sidebar icon"></i>
+        </a> -->
+    </nav>
+    <!-- 中间内容 -->
+    <div class="m-container-large m-padded-tn-big animate fadeIn">
+        <div class="ui container">
+            <div class="ui top  attached segment">
+                <div class="ui horizontal link list">
+                    <div class="item">
+                        <i class="calendar icon m-font-size-text-mini"></i>
+                        <span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}" class="m-font-size-text-mini">2020-01-01</span>
+                    </div>
+                    <div class="item">
+                        <i class="eye icon m-font-size-text-mini"></i> <span th:text="${blog.views}"
+                                                                             class="m-font-size-text-mini">2222</span>
+                    </div>
+                    <div class="item">
+                        <i class="comment outline icon m-font-size-text-mini"></i>
+                        <span th:text="${blog.commentCount}" class="m-font-size-text-mini">2222</span>
+                    </div>
+                    <!--                    <div class="item">-->
+                    <!--                        <div class="content">-->
+                    <!--                            <a href="#" class="header">Sincq</a>-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+
+                    <!--                    <div class="item">-->
+                    <!--                        <i class="calendar icon"></i> 2021-10-21-->
+                    <!--                    </div>-->
+
+                    <!--                    <div class="item">-->
+                    <!--                        <i class="eye icon"></i> 23333-->
+                    <!--                    </div>-->
+                </div>
+                <!-- head attatched to the top -->
+            </div>
+
+            <div class="ui attached m-padded-tb-mini segment">
+                <!-- content -->
+                <!--<div class="ui right aligned basic segment">-->
+                <!-- <div class="ui orange basic label">转载</div>-->
+                <!-- </div>-->
+                <h2 class="ui center aligned header" th:utext="${blog.title}"> 懂得都懂</h2>
+                <div id="content" class="typo  typo-selection js-toc-content m-padded-lr-responsive m-padded-tb-large"
+                     th:utext="${blog.content}">
+                    <h1>haha</h1>
+                    <h2>haha</h2>
+                    <h3>haha</h3>
+                    <h1>haha</h1>
+                    <h2>haha</h2>
+                </div>
+            </div>
+            <!-- think good and subscribe me -->
+            <div class="ui center aligned attached segment">
+                <button id="fellowme" class="ui orange circular button">关注我吧</button>
+                <!-- Pop up fellow me component -->
+                <div class="ui fellowmeId flowing popup transition hidden">
+                    <div class="ui orange label">
+                        <div class="ui images" style="font-size: inherit;">
+                            <div class="image">
+                                <img src="../static/images/noWechatPublic.PNG" th:src="@{/images/noWechatPublic.PNG}"
+                                     alt="" class="ui rounded bordered image"
+                                     style="width: 120px">
+                                <div>没有公众号,哈哈哈哈哈哈哈</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- button -->
-            <button class="ui menu toggle black icon button m-right-top m-mobile-show">
-                <i class="sidebar icon"></i>
-            </button>
-            <!-- <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
-                <i class="sidebar icon"></i>
-            </a> -->
-        </nav>
-        <!-- 中间内容 -->
-        <div class="m-container-small m-padded-tn-big animate fadeIn">
-            <div class="ui container">
-                <div class="ui top  attached segment">
-                    <div class="ui horizontal link list">
-                        <div class="item">
-                            <img src="https://lh5.googleusercontent.com/p/AF1QipPT_-F4fJjs_tD8-7LYJ3V9twzxOzIbh3f5BGMw=s483-k-no"
-                                 alt="" class="ui avatar image">
-                            <div class="content">
-                                <a href="#" class="header">Sincq</a>
-                            </div>
-                        </div>
 
-                        <div class="item">
-                            <i class="calendar icon"></i> 2021-10-21
-                        </div>
+            <!-- 博客信息 -->
+            <div class="ui attached positive message">
+                <div class="ui segment middle aligned">
+                    <ui class="list">
+                        <li>作者：SINCQ</li>
+                        <li>发布时间：<span th:text="${#dates.format(blog.updateTime,'yyyy-MM-dd')}"
+                                       class="m-font-size-text-mini">2020-01-01</span></li>
+                        <li>版权声明：自由转载-非商用-非衍生-保持署名(创意共享3.0许可证)</li>
+                    </ui>
+                </div>
+            </div>
 
-                        <div class="item">
-                            <i class="eye icon"></i> 23333
-                        </div>
+            <!-- Comment area -->
+            <div id="comment-form" th:if="${blog.commentable}" class="ui attached form">
+                <!-- comment list -->
+                <div class="ui orange segment">
+                    <div class="ui minimal comments">
                     </div>
-                    <!-- head attatched to the top -->
-                </div>
-
-                <div class="ui attached segment">
-                    <!-- picture area -->
-                    <img src="https://lh5.googleusercontent.com/p/AF1QipPT_-F4fJjs_tD8-7LYJ3V9twzxOzIbh3f5BGMw=s483-k-no"
-                         alt="" class="ui fluid rounded image">
-                </div>
-
-                <div class="ui attached m-padded-tb-mini segment">
-                    <!-- content -->
-                    <div class="ui right aligned basic segment">
-                        <div class="ui orange basic label">原创</div>
-                    </div>
-                    <h2 class="ui center aligned header"> 懂得都懂</h2>
-                    <div id="content" class="typo js-toc-content typo-selection">
-                        <p>懂得都懂</p>
-                        <p>懂得都懂</p>
-                        <p>懂得都懂</p>
-                        <p>懂得都懂</p>
-                        <h1>haha</h1>
-                        <h2>haha</h2>
-                        <h3>haha</h3>
-                        <h1>haha</h1>
-                        <h2>haha</h2>
-                    </div>
-                    <pre>
-                    <code class="language-java">import java.util.*</code>
-                </pre>
-                </div>
-
-                <div class="ui attached segment">
-                    <!-- information of blog -->
-                    <div class="ui orange right pointing label">懂得都懂</div>
-                </div>
-                <!-- think good and subscribe me -->
-                <div class="ui center aligned attached segment">
-                    <button id="fellowme" class="ui orange circular button">关注我吧</button>
-                    <!-- Pop up fellow me component -->
-                    <div class="ui fellowmeId flowing popup transition hidden">
-                        <div class="ui orange label">
-                            <div class="ui images" style="font-size: inherit;">
-                                <div class="image">
-                                    <img src="../static/images/noWechatPublic.PNG" alt="" class="ui rounded bordered image"
-                                         style="width: 120px">
-                                    <div>没有公众号,哈哈哈哈哈哈哈</div>
-                                </div>
-                            </div>
+                    <div class="ui form">
+                        <div class="field m-mobile-wide">
+                            <textarea name="content" placeholder="请输入留言..."></textarea>
                         </div>
-                    </div>
-                </div>
-
-                <!-- 博客信息 -->
-                <div class="ui attached positive message">
-                    <div class="ui segment middle aligned">
-                        <ui class="list">
-                            <li>作者：SINCQ</li>
-                            <li>发布时间：2021-10-22</li>
-                            <li>版权声明：自由转载-非商用-非衍生-保持署名(创意共享3.0许可证)</li>
-                        </ui>
-                    </div>
-                </div>
-
-                <!-- Comment area -->
-                <div id="comment-container" class="ui attached segment">
-                    <!-- comment list -->
-                    <div class="ui orange segment">
-                        <div class="ui minimal comments">
-                            <h3 class="ui dividing header">Comments</h3>
-                            <div class="comment">
-                                <a class="avatar">
-                                    <img src="/images/avatar/small/matt.jpg">
-                                </a>
-                                <div class="content">
-                                    <a class="author">Matt</a>
-                                    <div class="metadata">
-                                        <span class="date">Today at 5:42PM</span>
-                                    </div>
-                                    <div class="text">
-                                        How artistic!
-                                    </div>
-                                    <div class="actions">
-                                        <a class="reply">Reply</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="comment">
-                                <a class="avatar">
-                                    <img src="/images/avatar/small/elliot.jpg">
-                                </a>
-                                <div class="content">
-                                    <a class="author">Elliot Fu</a>
-                                    <div class="metadata">
-                                        <span class="date">Yesterday at 12:30AM</span>
-                                    </div>
-                                    <div class="text">
-                                        <p>This has been very useful for my research. Thanks as well!</p>
-                                    </div>
-                                    <div class="actions">
-                                        <a class="reply">Reply</a>
-                                    </div>
-                                </div>
-                                <div class="comments">
-                                    <div class="comment">
-                                        <a class="avatar">
-                                            <img src="/images/avatar/small/jenny.jpg">
-                                        </a>
-                                        <div class="content">
-                                            <a class="author">Jenny Hess</a>
-                                            <div class="metadata">
-                                                <span class="date">Just now</span>
-                                            </div>
-                                            <div class="text">
-                                                Elliot you are always so right :)
-                                            </div>
-                                            <div class="actions">
-                                                <a class="reply">Reply</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="comment">
-                                <a class="avatar">
-                                    <img src="/images/avatar/small/joe.jpg">
-                                </a>
-                                <div class="content">
-                                    <a class="author">Joe Henderson</a>
-                                    <div class="metadata">
-                                        <span class="date">5 days ago</span>
-                                    </div>
-                                    <div class="text">
-                                        Dude, this is awesome. Thanks so much
-                                    </div>
-                                    <div class="actions">
-                                        <a class="reply">Reply</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- <form class="ui reply form">
-                                <div class="field">
-                                    <textarea></textarea>
-                                </div>
-                                <div class="ui blue labeled submit icon button">
-                                    <i class="icon edit"></i> Add Reply
-                                </div>
-                            </form> -->
-                        </div>
-                        <div class="ui form">
+                        <div class="fields">
                             <div class="field m-mobile-wide">
-                                <textarea name="content" placeholder="请输入留言..."></textarea>
+                                <input type="text" name="name" placeholder="名字"
+                                       th:value="${session.user}!=null ? ${session.user.name}"/>
                             </div>
-                            <div class="fields">
-                                <div class="field m-mobile-wide">
-                                    <input type="text" name="name" placeholder="名字">
-                                </div>
-                                <div class="field m-mobile-wide">
-                                    <input type="text" name="email" placeholder="邮箱">
-                                </div>
-                                <div class="field m-mobile-wide">
-                                    <button class="ui orange button m-mobile-wide">发布</button>
-                                </div>
+                            <div class="field m-mobile-wide">
+                                <input type="text" name="email" placeholder="邮箱"
+                                       th:value="${session.user}!=null ? ${session.user.email}"/>
                             </div>
-
+                            <div class="field m-mobile-wide">
+                                <button id="commentpost-btn" type="button" class="ui orange button m-mobile-wide">发布
+                                </button>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="m-padded m-fixed m-right-bottom">
-            <div class="ui vertical icon buttons">
-                <button type="button" class="ui toc orange button">目录</button>
-                <!-- <a href="#" type="button" class="ui orange button">目录</a> -->
-                <a href="#comment-container" class="ui orange button">留言</a>
-                <button class="ui wechatbt orange button"><i class="weixin icon"></i></button>
-                <a href="#" class="ui orange button"><i class="chevron up icon"></i></a>
-                <!-- <div id="toTop-button" class="ui orange button"><i class="chevron up icon"></i></div> -->
-            </div>
-        </div>
-
-        <div class="ui toc-container flowing popup transition hidden" style="width: 250px">
-            <ol class="js-toc"></ol>
-        </div>
-
-        <div class="ui wechat-qr flowing popup transition hidden" style="width: 121px !important;">
-            <img src="../static/images/noWechatPublic.PNG" alt="" class="ui rounded image" style="width: 120px !important;">
-        </div>
-
-        <!--底部, 我认为我不需要底部的内容，不需要这么麻烦-->
-        <footer th:replace="fragmentTemplate :: foot" class="ui attached bottom inverted vertical segment m-padded-tb">
-            <div class="ui center aligned container">
-                <!-- <h4 class="ui inverted header">Copyright | Designed by QXC</h4> -->
-                <h4 class="ui inverted header">Copyright | Designed by SINCQ</h4>
-            </div>
-        </footer>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
-    <script src="../static/lib/prism/prism.js"></script>
-    <script src="../static/lib/tocbot/tocbot.min.js"></script>
-    <script src="@{/lib/prism/prism.js}"></script>
-    <script src="@{lib/tocbot/tocbot.min.js}"></script>
-    <script>
-        $('.menu.toggle').click(function () {
-            $('.m-item').toggleClass('m-mobile-show');
-        });
 
-        $('#fellowme').popup({
-            popup: $('.fellowmeId.popup'),
-            on: 'hover',
-            position: 'bottom center'
-        });
+    <div class="m-padded m-fixed m-right-bottom">
+        <div class="ui vertical icon buttons">
+            <!--            <button type="button" class="ui toc orange button">目录</button>-->
+            <!--            &lt;!&ndash; <a href="#" type="button" class="ui orange button">目录</a> &ndash;&gt;-->
+            <!--            <a href="#comment-container" class="ui orange button">留言</a>-->
+            <button class="ui wechatbt orange button"><i class="weixin icon"></i></button>
+            <a href="#" class="ui orange button"><i class="chevron up icon"></i></a>
+            <!-- <div id="toTop-button" class="ui orange button"><i class="chevron up icon"></i></div> -->
+        </div>
+    </div>
 
-        $('.toc.button').popup({
-            popup: $('.toc-container.popup'),
-            on: 'click',
-            position: 'left center'
-        });
+    <div class="ui toc-container flowing popup transition hidden" style="width: 250px">
+        <ol class="js-toc"></ol>
+    </div>
 
-        $('.wechatbt').popup({
-            popup: $('.wechat-qr.popup'),
-            on: 'hover',
-            position: 'right center'
-        });
+    <div class="ui wechat-qr flowing popup transition hidden" style="width: 121px !important;">
+        <img src="../static/images/noWechatPublic.PNG" th:src="@{/images/noWechatPublic.PNG}" alt=""
+             class="ui rounded image" style="width: 120px !important;">
+    </div>
 
-        $('#toTop-button').click(function () {
-            $(window).scrollTo(0, 500);
-        });
+    <!--底部, 我认为我不需要底部的内容，不需要这么麻烦-->
+    <footer th:replace="fragmentTemplate :: foot" class="ui attached bottom inverted vertical segment m-padded-tb">
+        <div class="ui center aligned container">
+            <!-- <h4 class="ui inverted header">Copyright | Designed by QXC</h4> -->
+            <h4 class="ui inverted header">Copyright | Designed by SINCQ</h4>
+        </div>
+    </footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<script src="../static/lib/prism/prism.js"></script>
+<script src="../static/lib/tocbot/tocbot.min.js"></script>
+<script src="@{/lib/prism/prism.js}"></script>
+<script src="@{lib/tocbot/tocbot.min.js}"></script>
+<script>
+    $('.menu.toggle').click(function () {
+        $('.m-item').toggleClass('m-mobile-show');
+    });
 
-        tocbot.init({
-            // Where to render the table of contents.
-            tocSelector: '.js-toc',
-            // Where to grab the headings to build the table of contents.
-            contentSelector: '.js-toc-content',
-            // Which headings to grab inside of the contentSelector element.
-            headingSelector: 'h1, h2, h3',
-            // For headings inside relative or absolute positioned containers within content.
-            hasInnerContainers: true,
+    $('#fellowme').popup({
+        popup: $('.fellowmeId.popup'),
+        on: 'hover',
+        position: 'bottom center'
+    });
+
+    $('.toc.button').popup({
+        popup: $('.toc-container.popup'),
+        on: 'click',
+        position: 'left center'
+    });
+
+    $('.wechatbt').popup({
+        popup: $('.wechat-qr.popup'),
+        on: 'hover',
+        position: 'right center'
+    });
+
+    $('#toTop-button').click(function () {
+        $(window).scrollTo(0, 500);
+    });
+
+    tocbot.init({
+        // Where to render the table of contents.
+        tocSelector: '.js-toc',
+        // Where to grab the headings to build the table of contents.
+        contentSelector: '.js-toc-content',
+        // Which headings to grab inside of the contentSelector element.
+        headingSelector: 'h1, h2, h3',
+        // For headings inside relative or absolute positioned containers within content.
+        hasInnerContainers: true,
+    });
+
+    //评论表单验证
+    $('.ui.form').form({
+        fields: {
+            title: {
+                identifier: 'content',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入评论内容'
+                }
+                ]
+            },
+            content: {
+                identifier: 'nickname',
+                rules: [{
+                    type: 'empty',
+                    prompt: '请输入你的大名'
+                }]
+            },
+            type: {
+                identifier: 'email',
+                rules: [{
+                    type: 'email',
+                    prompt: '请填写正确的邮箱地址'
+                }]
+            }
+        }
+    });
+
+    $(function () {
+        $("#comment-container").load(/*[[@{/comments/{id}(id=${blog.id})}]]*/"comments/6");
+    });
+
+
+    $('#commentpost-btn').click(function () {
+        var boo = $('.ui.form').form('validate form');
+        if (boo) {
+            console.log('校验成功');
+            postData();
+        } else {
+            console.log('校验失败');
+        }
+    });
+
+    function postData() {
+        $("#comment-container").load(/*[[@{/comments}]]*/"", {
+            "parentComment.id": $("[name='parentComment.id']").val(),
+            "blogId": $("[name='blogId']").val(),
+            "nickname": $("[name='nickname']").val(),
+            "email": $("[name='email']").val(),
+            "content": $("[name='content']").val()
+        }, function (responseTxt, statusTxt, xhr) {
+            $(window).scrollTo($('#goto'), 500);
+            clearContent();
         });
-    </script>
+    }
+
+    function clearContent() {
+        $("[name='nickname']").val('');
+        $("[name='email']").val('');
+        $("[name='content']").val('');
+        $("[name='parentComment.id']").val(-1);
+        $("[name='content']").attr("placeholder", "请输入评论信息...");
+    }
+
+    function reply(obj) {
+        var commentId = $(obj).data('commentid');
+        var commentNickname = $(obj).data('commentnickname');
+        $("[name='content']").attr("placeholder", "@" + commentNickname).focus();
+        $("[name='parentComment.id']").val(commentId);
+        $(window).scrollTo($('#comment-form'), 500);
+    }
+</script>
 <script th:replace="fragmentTemplate :: blogTotalRuntime"></script>
 </body>
 
