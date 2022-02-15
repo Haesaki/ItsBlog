@@ -8,24 +8,25 @@ import java.util.List;
 
 @Data
 public class Comment {
-
-    private Long id;
-    private String name;
+    private Integer id;
+    private String nickname;
     private String email;
     private String content;
 
-    //头像
+    //头像, 直接不需要头像
     private String avatar;
     private Date createTime;
 
-    private Long blogId;
-    private Long parentCommentId;
+    private Integer blogId;
+    private Integer parentCommentId;
     private String parentNickname;
 
     //回复评论
     private List<Comment> replyComments = new ArrayList<>();
     private Comment parentComment;
     private boolean adminComment;
+
+    // private Blog blog;
 
     public Comment() {
     }

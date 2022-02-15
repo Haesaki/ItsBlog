@@ -2,14 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.sincq.itsblog.dao.BlogMapper">
-    <resultMap id="User" type="org.sincq.itsblog.entity.User">
-        <id property="id" column="id"/>
-        <result property="nickname" column="nickname"/>
-        <result property="username" column="username"/>
-        <result property="email" column="email"/>
-        <result property="avatar" column="avatar"/>
-    </resultMap>
-
     <resultMap id="Blog" type="org.sincq.itsblog.entity.Blog">
         <id property="id" column="id"/>
         <result property="title" column="title"/>
@@ -147,6 +139,12 @@
         where b.title like #{pattern} or b.content like  #{pattern}
         order by updateTime desc
     </select>
+    <!--查询出文章评论数量并更新-->
+    <update id="updateCommentCountById" parameterType="java.lang.Integer">
+        update t_blog blog set blog.commentCount = (
+            select count(*) from t_comment comment where comment.blog_id = #{id} and blog.id = #{id}
+        ) WHERE blog.id = #{id}
+    </update>
 </mapper>
 
         <!--        org.springframework.jdbc.BadSqlGrammarException:-->

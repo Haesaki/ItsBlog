@@ -13,6 +13,8 @@ import java.util.List;
 @Mapper
 public interface BlogMapper {
 
+    int updateCommentCountById(Integer id);
+
     List<Blog> listAllBlog();
 
     List<Blog> getSearchBlog(String blog);

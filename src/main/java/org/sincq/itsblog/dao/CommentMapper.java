@@ -6,22 +6,23 @@ import org.sincq.itsblog.entity.Comment;
 
 import java.util.List;
 
+@Mapper
 public interface CommentMapper {
     //根据创建时间倒序来排
-    List<Comment> findByBlogIdParentIdNull(@Param("blogId") Long blogId, @Param("blogParentId") Long blogParentId);
+    List<Comment> findByBlogIdParentIdNull(@Param("blogId") Integer blogId, @Param("blogParentId") Integer blogParentId);
 
     //查询一级回复
-    List<Comment> findByBlogIdParentIdNotNull(@Param("blogId") Long blogId, @Param("id") Long id);
+    List<Comment> findByBlogIdParentIdNotNull(@Param("blogId") Integer blogId, @Param("id") Integer id);
 
     //查询二级回复
-    List<Comment> findByBlogIdAndReplayId(@Param("blogId") Long blogId,@Param("childId") Long childId);
+    List<Comment> findByBlogIdAndReplayId(@Param("blogId") Integer blogId,@Param("childId") Integer childId);
 
     //查询父级对象
-//    Comment findByParentCommentId(Long parentCommentId);
+//    Comment findByParentCommentId(Integer parentCommentId);
 
     //添加一个评论
     int saveComment(Comment comment);
 
     //删除评论
-    void deleteComment(Long id);
+    void deleteComment(Integer id);
 }
