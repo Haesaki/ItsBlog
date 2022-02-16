@@ -34,6 +34,7 @@ public class CommentController {
     public String comments(@PathVariable Integer blogId, Model model) {
         List<Comment> comments = commentService.listCommentByBlogId(blogId);
         model.addAttribute("comments", comments);
+//        return "blog/" + String.valueOf(blogId);
         return "blog :: commentList";
     }
 
@@ -47,7 +48,7 @@ public class CommentController {
             comment.setAdminComment(true);
         } else {
             //设置头像
-            comment.setAvatar("https://unsplash.it/100/100?image=1005");
+            comment.setAvatar("https://unsplash.it/100/100?image=1001");
         }
 
         if (comment.getParentComment().getId() != null) {
@@ -67,6 +68,6 @@ public class CommentController {
         List<Comment> comments = commentService.listCommentByBlogId(blogId);
         model.addAttribute("blog", blog);
         model.addAttribute("comments", comments);
-        return "blog";
+        return "blog/" + String.valueOf(blogId);
     }
 }
