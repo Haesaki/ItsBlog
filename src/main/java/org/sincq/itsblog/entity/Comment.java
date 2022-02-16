@@ -13,7 +13,7 @@ public class Comment {
     private String email;
     private String content;
 
-    //头像, 直接不需要头像
+    //头像
     private String avatar;
     private Date createTime;
 
@@ -25,6 +25,8 @@ public class Comment {
     private List<Comment> replyComments = new ArrayList<>();
     private Comment parentComment;
     private boolean adminComment;
+
+    private Blog blog;
 
     // private Blog blog;
 
