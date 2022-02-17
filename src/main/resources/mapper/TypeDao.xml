@@ -7,7 +7,7 @@
     </resultMap>
 
     <insert id="insertType" parameterType="org.sincq.itsblog.entity.Type">
-        insert into t_type values (#{id}, #{name})
+        insert into t_type values (#{id}, #{name}, #{blogNumber})
     </insert>
 
     <delete id="deleteTypeById" parameterType="java.lang.Integer">

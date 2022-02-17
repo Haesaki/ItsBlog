@@ -24,12 +24,19 @@
 
     <insert id="saveBlog" parameterType="org.sincq.itsblog.entity.Blog">
         insert into blog.t_blog (id, title, content, flag, views, subscribeMe, shareStatement, commentable,
-                                 commentCount, publish,
-                                 recommend, createTime, updateTime, typeId, userId, userName, typeName)
+        commentCount, publish,
+        recommend, createTime, updateTime, typeId, userId, userName, typeName)
         values (#{id}, #{title}, #{content}, #{flag}, #{views}, #{subscribeMe},
-                #{shareStatement}, #{commentable}, #{publish}, #{commentCount}, #{recommend}, #{createTime},
-                #{updateTime}, #{typeId}, #{userId}, #{userName}, #{typeName});
+        #{shareStatement}, #{commentable}, #{publish}, #{commentCount}, #{recommend}, #{createTime},
+        #{updateTime}, #{typeId}, #{userId}, #{userName}, #{typeName});
     </insert>
+
+    <!-- get Blogs By Type Id -->
+    <select id="getByTypeId" resultType="org.sincq.itsblog.entity.Blog">
+        select *
+        from t_blog b
+        where b.typeId = #{typeId} order by b.updateTime desc
+    </select>
 
     <delete id="deleteBlog">
         delete
@@ -39,22 +46,22 @@
 
     <update id="updateBlogById">
         update t_blog
-        set title          = #{title},
-            content        = #{content},
-            flag           = #{flag},
-            views          = #{views},
-            subscribeMe    = #{subscribeMe},
-            shareStatement = #{shareStatement},
-            commentable    = #{commentable},
-            commentCount   = #{commentCount},
-            publish        = #{publish},
-            recommend      = #{recommend},
-            createTime     = #{createTime},
-            updateTime     = #{updateTime},
-            typeId         = #{typeId},
-            userId         = #{userId},
-            userName       = #{userName},
-            typeName       = #{typeName}
+        set title = #{title},
+        content = #{content},
+        flag = #{flag},
+        views = #{views},
+        subscribeMe = #{subscribeMe},
+        shareStatement = #{shareStatement},
+        commentable = #{commentable},
+        commentCount = #{commentCount},
+        publish = #{publish},
+        recommend = #{recommend},
+        createTime = #{createTime},
+        updateTime = #{updateTime},
+        typeId = #{typeId},
+        userId = #{userId},
+        userName = #{userName},
+        typeName = #{typeName}
         where id = #{id}
     </update>
 
@@ -133,16 +140,16 @@
         WHERE recommend = true
     </select>
     <select id="getSearchBlog" resultType="org.sincq.itsblog.entity.Blog">
-        <bind name="pattern" value="'%' + query + '%'" />
+        <bind name="pattern" value="'%' + query + '%'"/>
         select *
         from t_blog b
-        where b.title like #{pattern} or b.content like  #{pattern}
+        where b.title like #{pattern} or b.content like #{pattern}
         order by updateTime desc
     </select>
     <!--查询出文章评论数量并更新-->
     <update id="updateCommentCountById" parameterType="java.lang.Integer">
         update t_blog blog set blog.commentCount = (
-            select count(*) from t_comment comment where comment.blog_id = #{id} and blog.id = #{id}
+        select count(*) from t_comment comment where comment.blog_id = #{id} and blog.id = #{id}
         ) WHERE blog.id = #{id}
     </update>
 </mapper>

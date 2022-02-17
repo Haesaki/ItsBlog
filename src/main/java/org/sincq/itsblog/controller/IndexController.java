@@ -107,11 +107,6 @@ public class IndexController {
         return "blog";
     }
 
-    @GetMapping("/tag")
-    public String tags() {
-        return "tags";
-    }
-
     @GetMapping("/aboutme")
     public String aboutme() {
         return "aboutme";

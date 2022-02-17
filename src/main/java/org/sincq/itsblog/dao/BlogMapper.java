@@ -2,18 +2,16 @@ package org.sincq.itsblog.dao;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.session.RowBounds;
 import org.sincq.itsblog.entity.Blog;
-import org.sincq.itsblog.entity.Type;
-import org.sincq.itsblog.entity.User;
 
-import java.util.Date;
 import java.util.List;
 
 @Mapper
 public interface BlogMapper {
 
     int updateCommentCountById(Integer id);
+
+    List<Blog> getByTypeId(Integer typeId);
 
     List<Blog> listAllBlog();
 

@@ -23,6 +23,12 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
+    public List<Blog> getByTypeId(Integer id) {
+        return blogMapper.getByTypeId(id);
+//        return null;
+    }
+
+    @Override
     public Blog getBlog(Integer id) {
         return blogMapper.getBlogById(id);
     }
