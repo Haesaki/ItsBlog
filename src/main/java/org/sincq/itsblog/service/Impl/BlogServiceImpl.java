@@ -17,7 +17,7 @@ public class BlogServiceImpl implements BlogService {
     private BlogMapper blogMapper;
 
     @Autowired
-    public void setBlogMapper(BlogMapper blogMapper){
+    public void setBlogMapper(BlogMapper blogMapper) {
         this.blogMapper = blogMapper;
         assert this.blogMapper != null;
     }
@@ -39,7 +39,7 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public List<Blog> getSearchBlog(String blog){
+    public List<Blog> getSearchBlog(String blog) {
         return null;
     }
 
@@ -56,8 +56,8 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public int updateBlog(Integer id, Blog blog) {
         Blog b = blogMapper.getBlogById(id);
-        if(b == null){
-            throw  new NotFoundException("该博客不存在");
+        if (b == null) {
+            throw new NotFoundException("该博客不存在");
         }
         BeanUtils.copyProperties(b, blog);
         return blogMapper.saveBlog(b);

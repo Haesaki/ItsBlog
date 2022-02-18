@@ -4,4 +4,6 @@ import org.sincq.itsblog.entity.User;
 
 public interface UserService {
     User checkUser(String userName, String userPasswd);
+
+    String getToken(String userName);
 }

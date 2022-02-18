@@ -23,4 +23,9 @@ public class UserServiceImpl implements UserService {
             return null;
         return user;
     }
+
+    @Override
+    public String getToken(String userName) {
+        return null;
+    }
 }

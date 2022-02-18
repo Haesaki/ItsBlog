@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.sincq.itsblog.dao.UserChallengeMapper">
+    <update id="updateChallengeByUsername">
+        update blog.t_userchallenge tuc
+        set tuc.challenge=#{challenge, jdbcType=VARCHAR}
+        where tuc.username=#{username, jdbcType=VARCHAR}
+    </update>
+
+    <update id="updateMD5">
+        update blog.t_userchallenge tuc
+        set tuc.md5=#{md5, jdbcType=VARCHAR}
+        where tuc.username=#{username, jdbcType=VARCHAR}
+    </update>
+
+    <select id="getChallengeByUsername" resultType="java.lang.String">
+        select tuc.challenge
+        from blog.t_userchallenge tuc
+        where tuc.username=#{username, jdbcType=VARCHAR}
+    </select>
+    <select id="getMD5ByUsername" resultType="java.lang.String">
+        select tuc.md5
+        from blog.t_userchallenge tuc
+        where tuc.username=#{username, jdbcType=VARCHAR}
+    </select>
+</mapper>

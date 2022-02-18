@@ -41,6 +41,10 @@ public class CommentController {
     //    新增评论
     @PostMapping("/comments")
     public String post(Comment comment, HttpSession session, Model model) {
+        if(comment.getContent().length() > 1024){
+            model.addAttribute("msg", "too long comment");
+            return "";
+        }
         Integer blogId = comment.getBlogId();
         User user = (User) session.getAttribute("user");
         if (user != null) {
