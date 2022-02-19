@@ -33,8 +33,19 @@ public class LoginController {
         }
         // 如果多用户登录请求的话，还需要再加一个前端，算了吧，就只有我一个admin用户，直接只给admin提供
         // 如果后面要扩展到多用户的话，需要登录之前就进入一个界面要求用户输入用户名，这样可以查询相对应用户的challenge
+
+        // 说明浏览器已经尝试过登录了,但是没有成功,就不刷新challenge
+        Cookie[] browserCookies = request.getCookies();
+        if (browserCookies != null) {
+            for (Cookie cookie : browserCookies) {
+                if ("challenge".equals(cookie.getName()))
+                    return "admin/login";
+            }
+        }
+
         String challenge = challengeService.getChallengeByUsernameAFlushChallenge("admin");
-        Cookie challengeCookie = new Cookie("challenge", "challenge");
+        Cookie challengeCookie = new Cookie("challenge", challenge);
+        challengeCookie.setMaxAge(10000);
         response.addCookie(challengeCookie);
         // return "/blogAdmin";
         return "admin/login";

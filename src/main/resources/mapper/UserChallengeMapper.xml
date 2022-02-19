@@ -13,6 +13,11 @@
         set tuc.md5=#{md5, jdbcType=VARCHAR}
         where tuc.username=#{username, jdbcType=VARCHAR}
     </update>
+    <update id="updateMD5ByUsername">
+        update blog.t_userchallenge tuc
+        set tuc.md5=#{md5, jdbcType=VARCHAR}
+        where tuc.username=#{username, jdbcType=VARCHAR}
+    </update>
 
     <select id="getChallengeByUsername" resultType="java.lang.String">
         select tuc.challenge

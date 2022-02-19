@@ -52,7 +52,9 @@
                     </div>
 
                     <!-- 中间博客内容 -->
-                    <div class="ui padded attached segment" th:each="blog : ${pageInfo.list}">
+                    <div class="ui padded attached segment"
+                         th:if="${pageInfo.list != null}"
+                         th:each="blog : ${pageInfo.list}">
                         <div class="ui vertical segment m-padded-tb-large">
                             <!--   <div class="ui mobile reversed stackable grid">-->
                             <div class="ui large aligned mobile reversed stackable grid">

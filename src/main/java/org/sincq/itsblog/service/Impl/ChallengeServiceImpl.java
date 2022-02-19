@@ -26,9 +26,9 @@ public class ChallengeServiceImpl implements ChallengeService {
     @Override
     public String getChallengeByUsernameAFlushChallenge(String userName) {
         // TODO: 问题在这里
-        String challenge = challengeMapper.getChallengeByUsername(userName);
+         String challenge = challengeMapper.getChallengeByUsername(userName);
         User user = userMapper.getUserByUsername(userName);
-        String md5 = MD5Util.encrypt(user.getPassword() + challenge);
+        String md5 = MD5Util.encrypt(challenge + user.getPassword());
 
         challengeMapper.updateMD5ByUsername(userName, md5);
 

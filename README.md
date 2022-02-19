@@ -58,9 +58,10 @@ Service / Dao 层命名方式
 ##### 缺点
 1. 可以看出，在传输用户名和密码的时候直接是明文传输，这种安全性很低，为了修正这种方案的缺陷，可以将，密码采用加盐，并通过md5的方式实现将密码编码成逆向存在难度的字符串。
     ![img.png](readmeResource/img/img_2.png)
-    但是这样的方式还是存在问题, 由于如果别人能截取到你的明文用户名和密码字符串的话,就一定能截取到你的密文字符串. 别人就可以直接通过重放攻击直接登录你的系统
+    
+但是这样的方式还是存在问题, 由于如果别人能截取到你的明文用户名和密码字符串的话,就一定能截取到你的密文字符串. 别人就可以直接通过重放攻击直接登录你的系统
 
-2. 可以利用token令牌的方式来进行用户校验
+2.  可以利用token令牌的方式来进行用户校验
 
 3. 每次生成不同的字符串，避免重放攻击
    由于HTTP是无状态的（这一次请求并不知道上一次请求的内容），可以在MYSQL中的USER表里面生成用户的验证Challenge(UUID 或者其他的随机字符串)，当用户正确登陆后，都会更新数据库里面的Challenge值
@@ -68,11 +69,22 @@ Service / Dao 层命名方式
 
 
 #### 利用Apache Shiro来完成身份验证和授权 有待完成
+![Shiro Architects](readmeResource/img/img_4.png)
+
+从这个图中可以看出构架主要分为subject，Shiro Management, Relam
+subject主要是登录的用户,Shiro Management是整个系统的管理者,Relam是数据的读取
+org.sincq.itsblog.config 主要完成了shiro的配置
+
+Shiro 扩展
+https://blog.csdn.net/qq_43286578/article/details/106061152
+https://blog.csdn.net/qq_36551991/article/details/118112004
+https://www.cnblogs.com/tony-hyn/p/11593241.html
+https://github.com/likingcan/shiro-springboot
 
 #### 利用Spring Security来完成身份验证和授权 有待完成
 
-#### JWT
-[Token](https://my.oschina.net/jamesfancy/blog/1613994)
+#### Shiro 和 Spring Security的比较
+
 
 ## 使用到的开源项目
 感谢这些开源项目
