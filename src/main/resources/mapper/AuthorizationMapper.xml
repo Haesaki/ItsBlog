@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.sincq.itsblog.dao.AuthorizationMapper">
+
+    <select id="getPramsByUsername" resultType="java.lang.String">
+        select ta.prams
+        from t_authorization ta
+        where ta.name = #{name}
+    </select>
+</mapper>
